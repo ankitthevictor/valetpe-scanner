@@ -3,55 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ValetPe - Post-Purchase Revenue Scanner</title>
+<title>ValetPe — Post-Purchase Revenue Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
 :root{
   --black:#0a0a0a;--black2:#111111;--black3:#161616;--black4:#1c1c1c;
-  --teal:#15c0ab;--teal-d:#0fa090;--teal-bg:rgba(21,192,171,0.08);--teal-bd:rgba(21,192,171,0.2);--teal-bg2:rgba(21,192,171,0.15);
-  --white:#fff;--text:#e8e8e6;--text2:#a8a8a5;--muted:#606060;
-  --border:#242424;--border2:#2e2e2e;
-  --red:#f04444;--red-bg:rgba(240,68,68,0.1);--red-bd:rgba(240,68,68,0.2);
-  --amber:#f0a030;--amber-bg:rgba(240,160,48,0.1);--amber-bd:rgba(240,160,48,0.2);
-  --blue:#4a9eff;--blue-bg:rgba(74,158,255,0.1);--blue-bd:rgba(74,158,255,0.2);
-  --green:#22c55e;--green-bg:rgba(34,197,94,0.1);
+  --teal:#15c0ab;--teal-bg:rgba(21,192,171,0.08);--teal-bd:rgba(21,192,171,0.18);
+  --white:#fff;--text:#e8e8e6;--text2:#a8a8a5;--muted:#555;
+  --border:#222;--border2:#2c2c2c;
+  --red:#f04444;--red-bg:rgba(240,68,68,0.08);--red-bd:rgba(240,68,68,0.18);
+  --amber:#f0a030;--amber-bg:rgba(240,160,48,0.08);--amber-bd:rgba(240,160,48,0.18);
+  --blue:#4a9eff;--blue-bg:rgba(74,158,255,0.08);--blue-bd:rgba(74,158,255,0.18);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--text);min-height:100vh;font-size:14px;line-height:1.55;}
-::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--black);}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--black);}::-webkit-scrollbar-thumb{background:var(--border2);}
 
+/* NAV */
 nav{background:var(--black);border-bottom:1px solid var(--border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
 .logo{display:flex;align-items:center;gap:10px;}
 .logo-wordmark{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;letter-spacing:-0.5px;color:var(--teal);}
 .nav-tag{font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal);background:var(--teal-bg);border:1px solid var(--teal-bd);padding:5px 13px;border-radius:20px;}
 
-/* ── HERO ── */
-#hero{max-width:680px;margin:0 auto;padding:52px 28px 44px;text-align:center;}
+/* HERO */
+#hero{max-width:660px;margin:0 auto;padding:52px 28px 44px;text-align:center;}
 .eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--teal);background:var(--teal-bg);border:1px solid var(--teal-bd);padding:5px 14px;border-radius:20px;margin-bottom:20px;}
-.hero-h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(28px,4.5vw,44px);line-height:1.05;letter-spacing:-1.2px;color:var(--white);margin-bottom:8px;}
+.hero-h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(28px,4.5vw,44px);line-height:1.05;letter-spacing:-1.2px;color:var(--white);margin-bottom:10px;}
 .hero-h1 em{font-style:normal;color:var(--teal);}
-.hero-sub{font-size:14px;color:var(--text2);line-height:1.75;max-width:480px;margin:0 auto 24px;font-weight:300;}
-
-/* Stats */
-.stats-strip{display:flex;max-width:580px;margin:0 auto 28px;background:var(--black2);border:1px solid var(--border2);border-radius:12px;overflow:hidden;}
+.hero-sub{font-size:14px;color:var(--text2);line-height:1.75;max-width:480px;margin:0 auto 28px;font-weight:300;}
+.stats-strip{display:flex;max-width:560px;margin:0 auto 28px;background:var(--black2);border:1px solid var(--border2);border-radius:12px;overflow:hidden;}
 .stat{flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);}
 .stat:last-child{border-right:none;}
 .stat-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;color:var(--teal);line-height:1;margin-bottom:3px;}
 .stat-lbl{font-size:9px;color:var(--muted);line-height:1.4;}
-
-/* Input form */
-.form-box{background:var(--black2);border:1px solid var(--border2);border-radius:14px;padding:24px;max-width:520px;margin:0 auto;text-align:left;}
-.form-title{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:18px;display:flex;align-items:center;gap:8px;}
-.form-title span{color:var(--teal);}
+.form-box{background:var(--black2);border:1px solid var(--border2);border-radius:14px;padding:24px;max-width:500px;margin:0 auto;text-align:left;}
+.form-title{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:18px;}
+.form-title em{color:var(--teal);font-style:normal;}
 .field{margin-bottom:14px;}
 .field label{display:block;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
 .field-hint{font-size:11px;color:var(--muted);margin-top:4px;}
+.input-row{display:flex;gap:10px;}
+.input-row .field{flex:1;}
 .finput{width:100%;height:46px;padding:0 16px;font-size:14px;border:1px solid var(--border2);border-radius:8px;background:var(--black3);color:var(--white);outline:none;transition:border-color 0.2s;font-family:'DM Sans',sans-serif;}
 .finput:focus{border-color:var(--teal);}
 .finput::placeholder{color:var(--muted);}
-.input-row{display:flex;gap:10px;}
-.input-row .field{flex:1;}
-.sbtn{width:100%;height:48px;font-size:14px;font-weight:700;background:var(--teal);color:var(--black);border:none;border-radius:9px;cursor:pointer;margin-top:4px;font-family:'DM Sans',sans-serif;transition:opacity 0.15s;}
+.sbtn{width:100%;height:48px;font-size:14px;font-weight:700;background:var(--teal);color:var(--black);border:none;border-radius:9px;cursor:pointer;margin-top:6px;font-family:'DM Sans',sans-serif;}
 .sbtn:hover{opacity:0.88;}
 .sbtn:disabled{opacity:0.35;cursor:not-allowed;}
 .quick-label{font-size:11px;color:var(--muted);margin-bottom:8px;}
@@ -60,7 +56,7 @@ nav{background:var(--black);border-bottom:1px solid var(--border);padding:0 32px
 .pill:hover{border-color:var(--teal);color:var(--teal);}
 .err{display:none;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--red);margin-top:12px;text-align:center;}
 
-/* ── LOADING ── */
+/* LOADING */
 #loading{display:none;text-align:center;padding:80px 28px;}
 .spinner{width:30px;height:30px;border:2px solid var(--border2);border-top-color:var(--teal);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 18px;}
 @keyframes spin{to{transform:rotate(360deg);}}
@@ -72,14 +68,14 @@ nav{background:var(--black);border-bottom:1px solid var(--border);padding:0 32px
 .ldot{width:5px;height:5px;border-radius:50%;background:var(--border2);flex-shrink:0;}
 .lstep.on .ldot,.lstep.ok .ldot{background:var(--teal);}
 
-/* ── DASHBOARD ── */
+/* DASHBOARD */
 #dash{display:none;max-width:860px;margin:0 auto;padding:0 28px 72px;animation:up 0.45s ease both;}
 @keyframes up{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
 .back{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;margin:18px 0 0;font-family:'DM Sans',sans-serif;}
 .back:hover{color:var(--teal);}
 
-/* Brand header */
-.brand-hdr{background:var(--black2);border:1px solid var(--border2);border-radius:14px;padding:24px 28px;margin:14px 0 12px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+/* BRAND HEADER */
+.brand-hdr{background:var(--black2);border:1px solid var(--border2);border-radius:14px;padding:22px 26px;margin:14px 0 10px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
 .bname{font-family:'Nunito',sans-serif;font-weight:900;font-size:26px;letter-spacing:-0.5px;color:var(--white);}
 .bcat{font-size:12px;color:var(--muted);margin-top:3px;}
 .score-wrap{text-align:center;flex-shrink:0;}
@@ -91,77 +87,62 @@ nav{background:var(--black);border-bottom:1px solid var(--border);padding:0 32px
 .t-average{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bd);}
 .t-good{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bd);}
 
-/* ── THE BIG INSIGHT — marketplace comparison ── */
-.marketplace-strip{
-  background:var(--black2);border:1px solid var(--border2);
-  border-radius:14px;padding:0;margin-bottom:12px;overflow:hidden;
-}
-.mkt-top{padding:20px 24px 16px;border-bottom:1px solid var(--border);}
-.mkt-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;}
-.mkt-headline{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--white);line-height:1.3;margin-bottom:6px;}
-.mkt-sub{font-size:13px;color:var(--text2);line-height:1.65;}
-.mkt-compare{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
-.mkt-col{padding:18px 24px;}
+/* SECTION LABEL */
+.sec-label{font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:4px;}
+
+/* REVENUE HAEMORRHAGE — the money bleeding visual */
+.haem-strip{background:var(--black2);border:1px solid var(--border2);border-radius:14px;overflow:hidden;margin-bottom:10px;}
+.haem-top{padding:20px 24px;border-bottom:1px solid var(--border);}
+.haem-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;color:var(--white);margin-bottom:5px;line-height:1.3;}
+.haem-sub{font-size:13px;color:var(--text2);line-height:1.65;}
+.haem-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+.haem-box{padding:18px 20px;border-right:1px solid var(--border);position:relative;}
+.haem-box:last-child{border-right:none;}
+.haem-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:26px;line-height:1;margin-bottom:4px;}
+.haem-val.red{color:var(--red);}
+.haem-val.amber{color:var(--amber);}
+.haem-val.teal{color:var(--teal);}
+.haem-name{font-size:11px;color:var(--muted);line-height:1.4;margin-bottom:5px;}
+.haem-calc{font-size:10px;color:var(--muted);font-style:italic;}
+
+/* PRIORITY ACTIONS — what to fix, ranked by revenue impact */
+.priority-list{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
+.priority-item{background:var(--black2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px;}
+.priority-rank{flex-shrink:0;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;}
+.rank-1{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd);}
+.rank-2{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd);}
+.rank-3{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bd);}
+.rank-4{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bd);}
+.priority-body{flex:1;}
+.priority-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.priority-desc{font-size:12px;color:var(--text2);line-height:1.6;}
+.priority-impact{font-size:11px;font-weight:600;color:var(--amber);margin-top:5px;}
+
+/* MARKETPLACE COMPARISON */
+.mkt-box{background:var(--black2);border:1px solid var(--border2);border-radius:14px;overflow:hidden;margin-bottom:10px;}
+.mkt-head{padding:20px 24px 16px;border-bottom:1px solid var(--border);}
+.mkt-headline{font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;color:var(--white);margin-bottom:5px;}
+.mkt-sub{font-size:13px;color:var(--text2);line-height:1.6;}
+.mkt-cols{display:grid;grid-template-columns:1fr 1fr;}
+.mkt-col{padding:18px 22px;}
 .mkt-col:first-child{border-right:1px solid var(--border);}
-.mkt-col-label{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:12px;}
-.mkt-col-label.bad{color:var(--red);}
-.mkt-col-label.good{color:var(--teal);}
-.mkt-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:12px;color:var(--text2);line-height:1.5;}
-.mkt-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px;}
-.mkt-dot.bad{background:var(--red);}
-.mkt-dot.good{background:var(--teal);}
-.mkt-bottom{display:grid;grid-template-columns:repeat(3,1fr);}
-.mkt-stat{padding:16px 20px;border-right:1px solid var(--border);text-align:center;}
+.mkt-col-hd{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px;}
+.mkt-col-hd.bad{color:var(--red);}
+.mkt-col-hd.good{color:var(--teal);}
+.mkt-row{display:flex;gap:9px;margin-bottom:9px;font-size:12px;color:var(--text2);line-height:1.5;align-items:flex-start;}
+.mkt-row:last-child{margin-bottom:0;}
+.mkt-ic{flex-shrink:0;font-size:13px;margin-top:0px;}
+.mkt-bottom{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);}
+.mkt-stat{padding:16px 20px;text-align:center;border-right:1px solid var(--border);}
 .mkt-stat:last-child{border-right:none;}
 .mkt-stat-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:var(--teal);line-height:1;margin-bottom:3px;}
 .mkt-stat-lbl{font-size:10px;color:var(--muted);line-height:1.4;}
 
-/* ── REVENUE IMPACT (calculated) ── */
-.impact-header{font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:4px;}
-.impact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:12px;}
-.impact-box{border-radius:10px;padding:16px 14px;}
-.impact-box.loss{background:rgba(240,68,68,0.06);border:1px solid var(--red-bd);}
-.impact-box.opp{background:rgba(240,160,48,0.06);border:1px solid var(--amber-bd);}
-.impact-box.recover{background:var(--teal-bg);border:1px solid var(--teal-bd);}
-.impact-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;line-height:1;margin-bottom:4px;}
-.impact-val.red{color:var(--red);}
-.impact-val.amber{color:var(--amber);}
-.impact-val.teal{color:var(--teal);}
-.impact-name{font-size:11px;color:var(--muted);line-height:1.4;margin-bottom:5px;}
-.impact-note{font-size:10px;font-weight:500;padding:2px 7px;border-radius:4px;display:inline-block;}
-.impact-note.red{background:var(--red-bg);color:var(--red);}
-.impact-note.amber{background:var(--amber-bg);color:var(--amber);}
-.impact-note.teal{background:var(--teal-bg);color:var(--teal);}
-
-/* KPI row */
-.kpi-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px;}
-.kpi{background:var(--black2);border:1px solid var(--border);border-radius:10px;padding:14px;}
-.kpi-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;line-height:1;margin-bottom:4px;}
-.kv-red{color:var(--red);}.kv-amber{color:var(--amber);}.kv-white{color:var(--white);}
-.kpi-lbl{font-size:11px;color:var(--muted);line-height:1.4;margin-bottom:5px;}
-.kpi-note{font-size:11px;font-weight:500;padding:2px 7px;border-radius:4px;display:inline-block;}
-.kn-bad{background:var(--red-bg);color:var(--red);}
-.kn-warn{background:var(--amber-bg);color:var(--amber);}
-
-.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:10px;}
-.card{background:var(--black2);border:1px solid var(--border);border-radius:12px;padding:18px;}
-.card-label{font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+/* BENCHMARK */
 .full-card{background:var(--black2);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:10px;}
-
-.ci{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;}
-.ci:last-child{margin-bottom:0;}
-.cvol-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px;}
-.ch{background:var(--red);}.cm{background:var(--amber);}.cl{background:var(--teal);}
-.ci-src{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
-.ci-text{font-size:13px;line-height:1.6;color:var(--text);}
-
-.pain{display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.6;padding:10px 12px;background:var(--black3);border:1px solid var(--border);border-radius:8px;margin-bottom:7px;}
-.pain:last-child{margin-bottom:0;}
-.pain-ic{font-size:14px;flex-shrink:0;margin-top:1px;}
-
 .bench{display:flex;flex-direction:column;gap:11px;}
 .brow{display:flex;align-items:center;gap:10px;}
-.brow-name{font-size:13px;min-width:150px;color:var(--text2);}
+.brow-name{font-size:13px;min-width:160px;color:var(--text2);}
 .brow-name.you{font-weight:700;color:var(--white);}
 .bbar-bg{flex:1;height:6px;background:var(--black3);border-radius:3px;overflow:hidden;border:1px solid var(--border);}
 .bbar{height:6px;border-radius:3px;}
@@ -169,30 +150,39 @@ nav{background:var(--black);border-bottom:1px solid var(--border);padding:0 32px
 .grade{font-size:11px;font-weight:800;width:24px;height:24px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
 .ga{background:var(--teal-bg);color:var(--teal);}.gb{background:var(--blue-bg);color:var(--blue);}.gc{background:var(--amber-bg);color:var(--amber);}.gd{background:var(--red-bg);color:var(--red);}
 
-/* ── VALETPE REVENUE DRIVER ── */
+/* VALETPE REVENUE ENGINE */
 .vp-box{background:var(--black2);border:1px solid var(--teal-bd);border-radius:14px;overflow:hidden;position:relative;margin-bottom:10px;}
 .vp-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),transparent 70%);}
-.vp-head{padding:22px 24px 16px;}
+.vp-head{padding:22px 24px 18px;}
 .vp-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;}
-.vp-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--white);line-height:1.25;letter-spacing:-0.3px;margin-bottom:0;}
+.vp-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--white);line-height:1.25;letter-spacing:-0.2px;}
 
-/* Revenue waterfall */
-.waterfall{display:flex;align-items:center;gap:0;padding:0 24px 20px;flex-wrap:wrap;}
-.wf-item{text-align:center;flex:1;min-width:100px;}
-.wf-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;line-height:1;margin-bottom:3px;}
-.wf-val.loss{color:var(--red);}
-.wf-val.add{color:var(--teal);}
-.wf-val.total{color:var(--white);}
-.wf-lbl{font-size:10px;color:var(--muted);line-height:1.4;}
-.wf-arrow{font-size:16px;color:var(--border2);padding:0 4px;align-self:center;flex:0;}
+/* GROWTH JOURNEY */
+.journey{display:flex;align-items:stretch;gap:0;padding:0 24px 20px;border-bottom:1px solid var(--border);}
+.journey-step{flex:1;text-align:center;padding:16px 10px;position:relative;}
+.journey-step::after{content:'';position:absolute;top:50%;right:-1px;transform:translateY(-50%);width:20px;height:20px;background:var(--black2);border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:1;font-size:10px;}
+.journey-step:last-child::after{display:none;}
+.journey-icon{font-size:22px;margin-bottom:8px;}
+.journey-label{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.journey-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;line-height:1;margin-bottom:3px;}
+.journey-val.red{color:var(--red);}
+.journey-val.teal{color:var(--teal);}
+.journey-val.white{color:var(--white);}
+.journey-desc{font-size:10px;color:var(--muted);line-height:1.4;}
+.journey-arrow{flex-shrink:0;display:flex;align-items:center;color:var(--border2);font-size:18px;padding:0 2px;}
 
-.vp-solves{display:flex;flex-direction:column;padding:0 24px;border-top:1px solid var(--border);}
+/* SOLVES */
+.vp-solves{display:flex;flex-direction:column;padding:0 24px;}
 .solve{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);}
 .solve:last-child{border-bottom:none;}
 .solve-icon{flex-shrink:0;width:38px;height:38px;border-radius:9px;background:var(--teal-bg);border:1px solid var(--teal-bd);display:flex;align-items:center;justify-content:center;font-size:17px;}
+.solve-before-after{display:flex;gap:8px;margin-top:6px;}
+.solve-ba{flex:1;padding:7px 10px;border-radius:6px;font-size:11px;line-height:1.5;}
+.solve-ba.before{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd);}
+.solve-ba.after{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bd);}
+.solve-ba-label{font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:3px;opacity:0.7;}
 .solve-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:3px;}
-.solve-desc{font-size:12px;color:var(--text2);line-height:1.65;}
-.solve-save{display:inline-block;font-size:12px;font-weight:700;color:var(--teal);margin-top:5px;}
+.solve-desc{font-size:12px;color:var(--text2);line-height:1.6;}
 
 .vp-cta{padding:18px 24px;border-top:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
 .btn-p{padding:11px 26px;background:var(--teal);color:var(--black);border:none;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;}
@@ -206,13 +196,13 @@ footer strong{color:var(--teal);}
 
 @media(max-width:600px){
   nav{padding:0 16px;}#hero{padding:36px 16px 32px;}#dash{padding:0 16px 48px;}
-  .kpi-row{grid-template-columns:repeat(2,1fr);}.two-col{grid-template-columns:1fr;}
-  .impact-grid{grid-template-columns:repeat(2,1fr);}
-  .mkt-compare{grid-template-columns:1fr;}.mkt-col:first-child{border-right:none;border-bottom:1px solid var(--border);}
+  .haem-grid{grid-template-columns:1fr 1fr;}.haem-box:nth-child(3){border-right:none;border-top:1px solid var(--border);grid-column:span 2;}
+  .mkt-cols{grid-template-columns:1fr;}.mkt-col:first-child{border-right:none;border-bottom:1px solid var(--border);}
   .mkt-bottom{grid-template-columns:repeat(2,1fr);}
   .stats-strip{flex-direction:column;}.stat{border-right:none;border-bottom:1px solid var(--border);}.stat:last-child{border-bottom:none;}
   .input-row{flex-direction:column;}
-  .waterfall{gap:8px;}
+  .journey{flex-direction:column;gap:8px;}.journey-arrow{display:none;}
+  .solve-before-after{flex-direction:column;}
 }
 </style>
 </head>
@@ -226,41 +216,39 @@ footer strong{color:var(--teal);}
     </svg>
     <span class="logo-wordmark">ValetPe</span>
   </div>
-  <div class="nav-tag">Post-Purchase Revenue Scanner</div>
+  <div class="nav-tag">Post-Purchase Revenue Intelligence</div>
 </nav>
 
+<!-- HERO -->
 <div id="hero">
   <div class="eyebrow">Free Revenue Intelligence Report</div>
   <h1 class="hero-h1">Get marketplace-grade post-purchase<br><em>without paying marketplace commission</em></h1>
-  <p class="hero-sub">Amazon and Myntra retain customers through great post-purchase. You can do the same — and keep 100% of the revenue. Enter your brand details to see exactly what it's worth.</p>
+  <p class="hero-sub">Amazon and Myntra retain D2C customers through seamless post-purchase. You can do the same — own the customer, own the data, keep 100% of the revenue. Enter your numbers to see exactly what it's worth.</p>
 
   <div class="stats-strip">
     <div class="stat"><div class="stat-val">67%</div><div class="stat-lbl">customers reorder based on post-purchase experience</div></div>
-    <div class="stat"><div class="stat-val">5x</div><div class="stat-lbl">cheaper to retain vs acquire a new customer</div></div>
-    <div class="stat"><div class="stat-val">30%</div><div class="stat-lbl">avg commission D2C brands pay to marketplaces</div></div>
+    <div class="stat"><div class="stat-val">5x</div><div class="stat-lbl">cheaper to retain than acquire a new customer</div></div>
+    <div class="stat"><div class="stat-val">25-30%</div><div class="stat-lbl">commission D2C brands pay to marketplaces</div></div>
   </div>
 
   <div class="form-box">
-    <div class="form-title">Enter your brand details <span>— we calculate the rest</span></div>
-
+    <div class="form-title">Enter your details — <em>we calculate the rest</em></div>
     <div class="field">
       <label>Brand name</label>
       <input class="finput" id="brand-input" type="text" placeholder="e.g. Snitch, Bewakoof, The Souled Store..."/>
     </div>
-
     <div class="input-row">
       <div class="field">
-        <label>Monthly sales (in Lakhs)</label>
-        <input class="finput" id="gmv-input" type="number" min="1" placeholder="e.g. 200 for Rs 2 Cr/month"/>
-        <div class="field-hint">Enter value in Lakhs. e.g. 150 means Rs 1.5 Cr/month</div>
+        <label>Monthly Sales (in Lakhs)</label>
+        <input class="finput" id="gmv-input" type="number" min="1" placeholder="e.g. 250"/>
+        <div class="field-hint">Rs 250L = Rs 2.5 Cr/month</div>
       </div>
       <div class="field">
-        <label>Avg Order Value (AOV)</label>
-        <input class="finput" id="aov-input" type="number" min="100" placeholder="e.g. 950"/>
-        <div class="field-hint">In Rupees. e.g. 950</div>
+        <label>Avg Order Value (Rs)</label>
+        <input class="finput" id="aov-input" type="number" min="100" placeholder="e.g. 850"/>
+        <div class="field-hint">Typical order value in Rs</div>
       </div>
     </div>
-
     <div class="quick-label">Quick fill with sample brands</div>
     <div class="pills">
       <span class="pill" onclick="qs('Snitch',250,750)">Snitch</span>
@@ -269,28 +257,33 @@ footer strong{color:var(--teal);}
       <span class="pill" onclick="qs('DaMENSCH',150,950)">DaMENSCH</span>
       <span class="pill" onclick="qs('Rare Rabbit',400,1800)">Rare Rabbit</span>
     </div>
-
     <button class="sbtn" id="scan-btn" onclick="startScan()">Generate Revenue Report</button>
     <div class="err" id="err"></div>
   </div>
 </div>
 
+<!-- LOADING -->
 <div id="loading">
   <div class="spinner"></div>
-  <div class="load-brand" id="load-lbl">Scanning brand...</div>
+  <div class="load-brand" id="load-lbl">Analysing brand...</div>
   <div class="load-steps">
-    <div class="lstep" id="ls1"><span class="ldot"></span>Searching reviews and complaints</div>
-    <div class="lstep" id="ls2"><span class="ldot"></span>Analysing RTO and return patterns</div>
-    <div class="lstep" id="ls3"><span class="ldot"></span>Benchmarking against competitors</div>
-    <div class="lstep" id="ls4"><span class="ldot"></span>Calculating your revenue opportunity</div>
+    <div class="lstep" id="ls1"><span class="ldot"></span>Researching post-purchase patterns</div>
+    <div class="lstep" id="ls2"><span class="ldot"></span>Identifying revenue leakage points</div>
+    <div class="lstep" id="ls3"><span class="ldot"></span>Benchmarking against category leaders</div>
+    <div class="lstep" id="ls4"><span class="ldot"></span>Building your revenue recovery plan</div>
   </div>
 </div>
 
+<!-- DASHBOARD -->
 <div id="dash">
   <button class="back" onclick="goBack()">Back to search</button>
 
+  <!-- Brand header with score -->
   <div class="brand-hdr">
-    <div><div class="bname" id="d-name"></div><div class="bcat" id="d-cat"></div></div>
+    <div>
+      <div class="bname" id="d-name"></div>
+      <div class="bcat" id="d-cat"></div>
+    </div>
     <div class="score-wrap">
       <div class="score-num" id="d-score"></div>
       <div class="score-of">/ 100 post-purchase score</div>
@@ -298,90 +291,94 @@ footer strong{color:var(--teal);}
     </div>
   </div>
 
-  <!-- THE BIG IDEA — marketplace comparison -->
-  <div class="marketplace-strip">
-    <div class="mkt-top">
-      <div class="mkt-label">The real opportunity</div>
-      <div class="mkt-headline" id="mkt-headline"></div>
-      <div class="mkt-sub" id="mkt-sub"></div>
+  <!-- REVENUE HAEMORRHAGE -->
+  <div class="sec-label">Where your revenue is bleeding — calculated from your inputs</div>
+  <div class="haem-strip">
+    <div class="haem-top">
+      <div class="haem-title" id="haem-title"></div>
+      <div class="haem-sub" id="haem-sub"></div>
     </div>
-    <div class="mkt-compare">
+    <div class="haem-grid">
+      <div class="haem-box">
+        <div class="haem-val red" id="h-rto"></div>
+        <div class="haem-name">Annual RTO losses</div>
+        <div class="haem-calc" id="h-rto-calc"></div>
+      </div>
+      <div class="haem-box">
+        <div class="haem-val amber" id="h-repeat"></div>
+        <div class="haem-name">Repeat revenue gap</div>
+        <div class="haem-calc" id="h-repeat-calc"></div>
+      </div>
+      <div class="haem-box">
+        <div class="haem-val red" id="h-total"></div>
+        <div class="haem-name">Total annual revenue at risk</div>
+        <div class="haem-calc">RTO losses + Repeat gap</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIORITY ACTIONS -->
+  <div class="sec-label">What to fix — ranked by revenue impact</div>
+  <div class="priority-list" id="priority-list"></div>
+
+  <!-- MARKETPLACE COMPARISON -->
+  <div class="sec-label">The real opportunity — own your post-purchase</div>
+  <div class="mkt-box">
+    <div class="mkt-head">
+      <div class="mkt-headline">What you get with ValetPe that costs 25-30% commission on Myntra/Amazon</div>
+      <div class="mkt-sub">Marketplaces retain customers because of great post-purchase. That infrastructure is now available directly to D2C brands — at a fraction of the cost and with zero commission.</div>
+    </div>
+    <div class="mkt-cols">
       <div class="mkt-col">
-        <div class="mkt-col-label bad">Without ValetPe (current state)</div>
-        <div class="mkt-item"><div class="mkt-dot bad"></div><span>Customers lost after bad return experience — never come back</span></div>
-        <div class="mkt-item"><div class="mkt-dot bad"></div><span>RTO orders cost Rs 120-200 in reverse logistics — pure loss</span></div>
-        <div class="mkt-item"><div class="mkt-dot bad"></div><span>Refunds take 10-15 days — customers move to competitors</span></div>
-        <div class="mkt-item"><div class="mkt-dot bad"></div><span>Or pay 25-30% commission to Myntra/Amazon who handle it for you</span></div>
-        <div class="mkt-item"><div class="mkt-dot bad"></div><span>Zero customer data from marketplace sales</span></div>
+        <div class="mkt-col-hd bad">Without ValetPe</div>
+        <div class="mkt-row"><div class="mkt-ic">❌</div><span>High RTO rate — no order intelligence before dispatch</span></div>
+        <div class="mkt-row"><div class="mkt-ic">❌</div><span>Manual return process — customer waits 10-15 days with no updates</span></div>
+        <div class="mkt-row"><div class="mkt-ic">❌</div><span>Price drops create angry customers who never come back</span></div>
+        <div class="mkt-row"><div class="mkt-ic">❌</div><span>Or pay 25-30% to marketplace who solves it for you — and owns the customer</span></div>
+        <div class="mkt-row"><div class="mkt-ic">❌</div><span>No data on why customers don't repurchase</span></div>
       </div>
       <div class="mkt-col">
-        <div class="mkt-col-label good">With ValetPe (what you unlock)</div>
-        <div class="mkt-item"><div class="mkt-dot good"></div><span>Marketplace-grade post-purchase — at zero commission</span></div>
-        <div class="mkt-item"><div class="mkt-dot good"></div><span>RTO intelligence flags bad orders before dispatch — 30% lower RTO</span></div>
-        <div class="mkt-item"><div class="mkt-dot good"></div><span>Automated returns — customer gets resolved in 48hrs not 15 days</span></div>
-        <div class="mkt-item"><div class="mkt-dot good"></div><span>Price protection turns discount frustration into brand wallet credits</span></div>
-        <div class="mkt-item"><div class="mkt-dot good"></div><span>Every interaction builds your own customer data and trust</span></div>
+        <div class="mkt-col-hd good">With ValetPe</div>
+        <div class="mkt-row"><div class="mkt-ic">✅</div><span>RTO Intelligence — flags risky orders before dispatch. 30% lower RTO rate.</span></div>
+        <div class="mkt-row"><div class="mkt-ic">✅</div><span>Automated returns — customer resolved in 48 hrs. Support tickets down 40%.</span></div>
+        <div class="mkt-row"><div class="mkt-ic">✅</div><span>Price Protection — price drops credited to brand wallet, driving next order</span></div>
+        <div class="mkt-row"><div class="mkt-ic">✅</div><span>Zero commission. You own every customer relationship and data point.</span></div>
+        <div class="mkt-row"><div class="mkt-ic">✅</div><span>Full post-purchase analytics — know exactly where customers drop off</span></div>
       </div>
     </div>
     <div class="mkt-bottom">
-      <div class="mkt-stat"><div class="mkt-stat-val" id="mkt-commission-saved"></div><div class="mkt-stat-lbl">Annual commission saved vs marketplace at same GMV</div></div>
-      <div class="mkt-stat"><div class="mkt-stat-val" id="mkt-orders"></div><div class="mkt-stat-lbl">Est. monthly orders processed directly</div></div>
-      <div class="mkt-stat"><div class="mkt-stat-val" id="mkt-ltv"></div><div class="mkt-stat-lbl">Customer LTV uplift with better post-purchase</div></div>
+      <div class="mkt-stat"><div class="mkt-stat-val" id="mkt-commission"></div><div class="mkt-stat-lbl">Annual marketplace commission at same GMV</div></div>
+      <div class="mkt-stat"><div class="mkt-stat-val" id="mkt-orders"></div><div class="mkt-stat-lbl">Monthly orders you process directly</div></div>
+      <div class="mkt-stat"><div class="mkt-stat-val">2.2x</div><div class="mkt-stat-lbl">Customer LTV uplift with better post-purchase</div></div>
     </div>
   </div>
 
-  <!-- Calculated revenue impact -->
-  <div class="impact-header">Annual revenue impact — calculated from your inputs</div>
-  <div class="impact-grid">
-    <div class="impact-box loss">
-      <div class="impact-val red" id="imp-rto"></div>
-      <div class="impact-name">Annual RTO loss (logistics + unrecovered revenue)</div>
-      <div class="impact-note red" id="imp-rto-n"></div>
-    </div>
-    <div class="impact-box opp">
-      <div class="impact-val amber" id="imp-repeat"></div>
-      <div class="impact-name">Annual repeat revenue being left on table</div>
-      <div class="impact-note amber" id="imp-repeat-n"></div>
-    </div>
-    <div class="impact-box recover">
-      <div class="impact-val teal" id="imp-recover"></div>
-      <div class="impact-name">Recoverable with ValetPe annually</div>
-      <div class="impact-note teal" id="imp-recover-n"></div>
-    </div>
+  <!-- BENCHMARK -->
+  <div class="sec-label">How your post-purchase score compares</div>
+  <div class="full-card">
+    <div id="d-bench" class="bench"></div>
   </div>
 
-  <!-- KPIs from research -->
-  <div class="kpi-row">
-    <div class="kpi"><div class="kpi-val kv-red" id="k-rto"></div><div class="kpi-lbl">Est. RTO rate</div><div class="kpi-note kn-bad" id="k-rto-n"></div></div>
-    <div class="kpi"><div class="kpi-val kv-white" id="k-rep"></div><div class="kpi-lbl">Repeat purchase rate</div><div class="kpi-note kn-warn" id="k-rep-n"></div></div>
-    <div class="kpi"><div class="kpi-val kv-amber" id="k-ref"></div><div class="kpi-lbl">Avg refund time</div><div class="kpi-note kn-warn" id="k-ref-n"></div></div>
-    <div class="kpi"><div class="kpi-val kv-red" id="k-com"></div><div class="kpi-lbl">Monthly PP complaints</div><div class="kpi-note kn-bad" id="k-com-n"></div></div>
-  </div>
-
-  <div class="two-col">
-    <div class="card"><div class="card-label">What customers are saying publicly</div><div id="d-complaints"></div></div>
-    <div class="card"><div class="card-label">Root causes of revenue loss</div><div id="d-pains"></div></div>
-  </div>
-
-  <div class="full-card"><div class="card-label">Post-purchase score vs competitors</div><div id="d-bench" class="bench"></div></div>
-
-  <!-- ValetPe Revenue Driver -->
+  <!-- VALETPE REVENUE ENGINE -->
+  <div class="sec-label">ValetPe — your post-purchase revenue engine</div>
   <div class="vp-box">
     <div class="vp-head">
-      <div class="vp-eyebrow">ValetPe — your post-purchase revenue engine</div>
+      <div class="vp-eyebrow">From leaking revenue to compounding growth</div>
       <div class="vp-title" id="vp-title"></div>
     </div>
 
-    <!-- Revenue waterfall -->
-    <div class="waterfall" id="vp-waterfall"></div>
+    <!-- Growth journey -->
+    <div class="journey" id="vp-journey"></div>
 
+    <!-- Solves with before/after -->
     <div class="vp-solves" id="vp-solves"></div>
+
     <div class="vp-cta">
       <button class="btn-p" onclick="window.open('https://valetpe.com','_blank')">Get started with ValetPe</button>
       <button class="btn-s" onclick="shareRep()">Share this report</button>
       <button class="btn-s" onclick="downloadCSV()">Download calculations</button>
     </div>
-    <div class="disclaimer">* Revenue figures are calculated using your inputs and industry benchmarks (RTO rate from public research, 30% RTO reduction, 38% repeat rate target). Actual results depend on brand-specific factors. Contact valetpe.com for a detailed assessment.</div>
+    <div class="disclaimer">* Revenue figures are calculated using your inputs and industry benchmarks. RTO rate and repeat rate are based on publicly available research for this category. Actual results depend on brand-specific factors. Contact valetpe.com for a customised assessment.</div>
   </div>
 </div>
 
@@ -392,76 +389,72 @@ var STEPS = ['ls1','ls2','ls3','ls4'];
 var tim = null;
 var _report = null;
 var _inputs = {};
+var _impact = {};
 
-function qs(brand, gmvLakhs, aov) {
+function qs(brand, gmv, aov) {
   document.getElementById('brand-input').value = brand;
-  document.getElementById('gmv-input').value = gmvLakhs;
+  document.getElementById('gmv-input').value = gmv;
   document.getElementById('aov-input').value = aov;
 }
 
-// Format currency
 function fmt(n) {
   if (n >= 10000000) return 'Rs ' + (n/10000000).toFixed(1) + ' Cr';
-  if (n >= 100000) return 'Rs ' + Math.round(n/100000) + ' L';
+  if (n >= 100000) return 'Rs ' + (n/100000).toFixed(1) + ' L';
   return 'Rs ' + Math.round(n).toLocaleString('en-IN');
 }
 
-function fmtShort(n) {
+function fmtN(n) {
   if (n >= 10000000) return (n/10000000).toFixed(1) + ' Cr';
-  if (n >= 100000) return Math.round(n/100000) + ' L';
+  if (n >= 100000) return (n/100000).toFixed(1) + ' L';
   return Math.round(n).toLocaleString('en-IN');
 }
 
-// CORRECT calculation — 1 Lakh = 1,00,000 Rs
+// CORRECT: 1 Lakh = 1,00,000 Rs
 function calcImpact(rtoRatePct, repeatRatePct, monthlyGmvLakhs, aov) {
-  var monthlyGmvRs = monthlyGmvLakhs * 100000; // 1 Lakh = 100,000 Rs
+  var monthlyGmvRs = monthlyGmvLakhs * 100000;
   var monthlyOrders = Math.round(monthlyGmvRs / aov);
   var annualOrders = monthlyOrders * 12;
+  var annualGmvRs = monthlyGmvRs * 12;
   var rtoRate = rtoRatePct / 100;
-  var monthlyRTOs = Math.round(monthlyOrders * rtoRate);
-  var annualRTOs = monthlyRTOs * 12;
-  // RTO cost: reverse logistics (avg Rs 130) + 20% order value unrecovered
-  var annualRTOcost = Math.round(annualRTOs * (130 + aov * 0.20));
-  // Repeat gap: industry benchmark 38% repeat rate
-  var repeatGap = Math.max(0, 0.38 - (repeatRatePct / 100));
+  var annualRTOs = Math.round(annualOrders * rtoRate);
+  var annualRTOcost = Math.round(annualRTOs * (130 + aov * 0.18));
+  var repeatGap = Math.max(0, 0.38 - repeatRatePct / 100);
   var annualRepeatOpp = Math.round(annualOrders * repeatGap * aov * 0.22);
-  // ValetPe recovers ~55% of total
   var totalAtRisk = annualRTOcost + annualRepeatOpp;
   var totalRecoverable = Math.round(totalAtRisk * 0.55);
-  // Marketplace commission saved (25% commission equivalent)
-  var annualGmvRs = monthlyGmvRs * 12;
-  var commissionSaved = Math.round(annualGmvRs * 0.27);
-
+  var rtoSavings = Math.round(annualRTOcost * 0.30);
+  var commissionEquivalent = Math.round(annualGmvRs * 0.27);
   return {
     monthlyOrders: monthlyOrders,
     annualOrders: annualOrders,
+    annualGmvRs: annualGmvRs,
     annualRTOs: annualRTOs,
     annualRTOcost: annualRTOcost,
     annualRepeatOpp: annualRepeatOpp,
     totalAtRisk: totalAtRisk,
     totalRecoverable: totalRecoverable,
-    commissionSaved: commissionSaved,
-    annualGmvRs: annualGmvRs
+    rtoSavings: rtoSavings,
+    commissionEquivalent: commissionEquivalent
   };
 }
 
 function startScan() {
   var brand = document.getElementById('brand-input').value.trim();
-  var gmvRaw = document.getElementById('gmv-input').value;
-  var aovRaw = document.getElementById('aov-input').value;
+  var gmvRaw = parseFloat(document.getElementById('gmv-input').value);
+  var aovRaw = parseFloat(document.getElementById('aov-input').value);
   var eb = document.getElementById('err');
 
   if (!brand) { eb.textContent = 'Please enter a brand name.'; eb.style.display = 'block'; return; }
-  if (!gmvRaw || parseFloat(gmvRaw) <= 0) { eb.textContent = 'Please enter monthly sales in Lakhs (e.g. 200 for Rs 2 Cr/month).'; eb.style.display = 'block'; return; }
-  if (!aovRaw || parseFloat(aovRaw) < 100) { eb.textContent = 'Please enter Average Order Value in Rupees (e.g. 950).'; eb.style.display = 'block'; return; }
+  if (!gmvRaw || gmvRaw <= 0) { eb.textContent = 'Please enter monthly sales in Lakhs (e.g. 250 for Rs 2.5 Cr/month).'; eb.style.display = 'block'; return; }
+  if (!aovRaw || aovRaw < 100) { eb.textContent = 'Please enter Average Order Value in Rupees (e.g. 850).'; eb.style.display = 'block'; return; }
 
   eb.style.display = 'none';
-  _inputs = { brand: brand, gmvLakhs: parseFloat(gmvRaw), aov: parseFloat(aovRaw) };
+  _inputs = { brand: brand, gmvLakhs: gmvRaw, aov: aovRaw };
 
   document.getElementById('hero').style.display = 'none';
   document.getElementById('dash').style.display = 'none';
   document.getElementById('loading').style.display = 'block';
-  document.getElementById('load-lbl').textContent = 'Scanning ' + brand + '...';
+  document.getElementById('load-lbl').textContent = 'Analysing ' + brand + '...';
   document.getElementById('scan-btn').disabled = true;
 
   STEPS.forEach(function(id) { document.getElementById(id).className = 'lstep'; });
@@ -496,7 +489,7 @@ function render(r) {
   _report = r;
   var rtoRatePct = parseFloat(r.kpis.rto_rate_num) || 20;
   var repeatRatePct = parseFloat(r.kpis.repeat_rate_num) || 25;
-  var impact = calcImpact(rtoRatePct, repeatRatePct, _inputs.gmvLakhs, _inputs.aov);
+  _impact = calcImpact(rtoRatePct, repeatRatePct, _inputs.gmvLakhs, _inputs.aov);
 
   // Header
   document.getElementById('d-name').textContent = r.brand;
@@ -507,56 +500,34 @@ function render(r) {
   var tc = { 'Critical': 't-critical', 'Needs Attention': 't-attention', 'Average': 't-average', 'Good': 't-good' };
   tag.className = 'score-tag ' + (tc[r.score_verdict] || 't-attention');
 
-  // Marketplace strip
-  document.getElementById('mkt-headline').textContent = r.brand + ' does Rs ' + _inputs.gmvLakhs + 'L/month. Here is what great post-purchase unlocks.';
-  document.getElementById('mkt-sub').textContent = 'Amazon and Myntra retain D2C customers through seamless returns, fast refunds, and proactive tracking — that is why 60%+ of their customers reorder. You can have the same infrastructure without paying 25-30% commission on every order.';
-  document.getElementById('mkt-commission-saved').textContent = fmt(impact.commissionSaved);
-  document.getElementById('mkt-orders').textContent = impact.monthlyOrders.toLocaleString('en-IN');
-  document.getElementById('mkt-ltv').textContent = '2.2x';
+  // Revenue haemorrhage
+  document.getElementById('haem-title').textContent = r.brand + ' is losing ' + fmt(_impact.totalAtRisk) + ' annually to fixable post-purchase problems';
+  document.getElementById('haem-sub').textContent = r.revenue_context;
+  document.getElementById('h-rto').textContent = fmt(_impact.annualRTOcost);
+  document.getElementById('h-rto-calc').textContent = _impact.annualRTOs.toLocaleString('en-IN') + ' RTOs x (Rs130 + 18% AOV)';
+  document.getElementById('h-repeat').textContent = fmt(_impact.annualRepeatOpp);
+  document.getElementById('h-repeat-calc').textContent = 'Gap from ' + repeatRatePct + '% to 38% repeat rate';
+  document.getElementById('h-total').textContent = fmt(_impact.totalAtRisk);
 
-  // Impact boxes
-  document.getElementById('imp-rto').textContent = fmt(impact.annualRTOcost);
-  document.getElementById('imp-rto-n').textContent = impact.annualRTOs.toLocaleString('en-IN') + ' RTOs/year';
-  document.getElementById('imp-repeat').textContent = fmt(impact.annualRepeatOpp);
-  document.getElementById('imp-repeat-n').textContent = 'Gap to 38% repeat rate';
-  document.getElementById('imp-recover').textContent = fmt(impact.totalRecoverable);
-  document.getElementById('imp-recover-n').textContent = '~55% of Rs ' + fmtShort(impact.totalAtRisk) + ' at risk';
-
-  // KPIs
-  var k = r.kpis;
-  document.getElementById('k-rto').textContent = k.rto_rate;
-  document.getElementById('k-rto-n').textContent = k.rto_note;
-  document.getElementById('k-rep').textContent = k.repeat_rate;
-  document.getElementById('k-rep-n').textContent = k.repeat_note;
-  document.getElementById('k-ref').textContent = k.refund_time;
-  document.getElementById('k-ref-n').textContent = k.refund_note;
-  document.getElementById('k-com').textContent = k.monthly_complaints;
-  document.getElementById('k-com-n').textContent = k.complaints_note;
-
-  // Complaints
-  var vc = { high: 'ch', medium: 'cm', low: 'cl' };
-  var cEl = document.getElementById('d-complaints');
-  cEl.innerHTML = '';
-  r.complaints.forEach(function(c) {
-    var wrap = document.createElement('div'); wrap.className = 'ci';
-    var dot = document.createElement('div'); dot.className = 'cvol-dot ' + (vc[c.volume] || 'cm');
-    var inner = document.createElement('div');
-    var src = document.createElement('div'); src.className = 'ci-src'; src.textContent = c.source;
-    var txt = document.createElement('div'); txt.className = 'ci-text'; txt.textContent = c.text;
-    inner.appendChild(src); inner.appendChild(txt);
-    wrap.appendChild(dot); wrap.appendChild(inner);
-    cEl.appendChild(wrap);
-  });
-
-  // Pain points
-  var pEl = document.getElementById('d-pains');
+  // Priority actions
+  var priorities = r.priority_actions || [];
+  var pEl = document.getElementById('priority-list');
   pEl.innerHTML = '';
-  r.pain_points.forEach(function(p) {
-    var d = document.createElement('div'); d.className = 'pain';
-    var ic = document.createElement('span'); ic.className = 'pain-ic'; ic.textContent = p.icon;
-    var tx = document.createElement('span'); tx.textContent = p.text;
-    d.appendChild(ic); d.appendChild(tx); pEl.appendChild(d);
+  priorities.forEach(function(p, i) {
+    var rankClass = ['rank-1','rank-2','rank-3','rank-4'][i] || 'rank-4';
+    var d = document.createElement('div'); d.className = 'priority-item';
+    var rank = document.createElement('div'); rank.className = 'priority-rank ' + rankClass; rank.textContent = i + 1;
+    var body = document.createElement('div'); body.className = 'priority-body';
+    var title = document.createElement('div'); title.className = 'priority-title'; title.textContent = p.title;
+    var desc = document.createElement('div'); desc.className = 'priority-desc'; desc.textContent = p.desc;
+    var impact = document.createElement('div'); impact.className = 'priority-impact'; impact.textContent = p.revenue_impact;
+    body.appendChild(title); body.appendChild(desc); body.appendChild(impact);
+    d.appendChild(rank); d.appendChild(body); pEl.appendChild(d);
   });
+
+  // Marketplace comparison numbers
+  document.getElementById('mkt-commission').textContent = fmt(_impact.commissionEquivalent);
+  document.getElementById('mkt-orders').textContent = _impact.monthlyOrders.toLocaleString('en-IN');
 
   // Benchmark
   var bEl = document.getElementById('d-bench');
@@ -578,40 +549,52 @@ function render(r) {
   });
 
   // ValetPe section
-  document.getElementById('vp-title').textContent = r.brand + ' can recover ' + fmt(impact.totalRecoverable) + ' annually and build sustainable repeat growth';
+  document.getElementById('vp-title').textContent = 'Recover ' + fmt(_impact.totalRecoverable) + ' annually and build a brand customers come back to';
 
-  // Revenue waterfall
-  var wfEl = document.getElementById('vp-waterfall');
-  wfEl.innerHTML = '';
-  var wfItems = [
-    { val: fmt(impact.annualGmvRs), label: 'Current annual GMV', cls: 'total' },
-    { val: '+ ' + fmt(Math.round(impact.annualRTOcost * 0.3)), label: 'RTO savings (30% reduction)', cls: 'add' },
-    { val: '+ ' + fmt(impact.annualRepeatOpp), label: 'Repeat revenue unlocked', cls: 'add' },
-    { val: '= ' + fmt(impact.annualGmvRs + impact.totalRecoverable), label: 'GMV with ValetPe', cls: 'add' }
+  // Growth journey
+  var journeyEl = document.getElementById('vp-journey');
+  journeyEl.innerHTML = '';
+  var steps = [
+    { icon: '📉', label: 'Today', val: fmt(_impact.totalAtRisk), valcls: 'red', desc: 'Annual revenue at risk' },
+    { icon: '🧠', label: 'RTO Intelligence', val: '+ ' + fmt(_impact.rtoSavings), valcls: 'teal', desc: '30% fewer RTOs annually' },
+    { icon: '🔄', label: 'Smart Returns', val: '+ ' + fmt(Math.round(_impact.annualRepeatOpp * 0.5)), valcls: 'teal', desc: 'Customers trust the brand' },
+    { icon: '🏷️', label: 'Price Protection', val: '+ ' + fmt(Math.round(_impact.annualRepeatOpp * 0.5)), valcls: 'teal', desc: 'Price drops drive repeat orders' },
+    { icon: '📈', label: 'With ValetPe', val: fmt(_impact.totalRecoverable), valcls: 'teal', desc: 'Annual revenue recovered' }
   ];
-  wfItems.forEach(function(item, i) {
-    var div = document.createElement('div'); div.className = 'wf-item';
-    var val = document.createElement('div'); val.className = 'wf-val ' + item.cls; val.textContent = item.val;
-    var lbl = document.createElement('div'); lbl.className = 'wf-lbl'; lbl.textContent = item.label;
-    div.appendChild(val); div.appendChild(lbl);
-    wfEl.appendChild(div);
-    if (i < wfItems.length - 1) {
-      var arrow = document.createElement('div'); arrow.className = 'wf-arrow'; arrow.textContent = '+';
-      wfEl.appendChild(arrow);
+  steps.forEach(function(step, i) {
+    var div = document.createElement('div'); div.className = 'journey-step';
+    var icon = document.createElement('div'); icon.className = 'journey-icon'; icon.textContent = step.icon;
+    var lbl = document.createElement('div'); lbl.className = 'journey-label'; lbl.textContent = step.label;
+    var val = document.createElement('div'); val.className = 'journey-val ' + step.valcls; val.textContent = step.val;
+    var desc = document.createElement('div'); desc.className = 'journey-desc'; desc.textContent = step.desc;
+    div.appendChild(icon); div.appendChild(lbl); div.appendChild(val); div.appendChild(desc);
+    journeyEl.appendChild(div);
+    if (i < steps.length - 1) {
+      var arrow = document.createElement('div'); arrow.className = 'journey-arrow'; arrow.textContent = '→';
+      journeyEl.appendChild(arrow);
     }
   });
 
-  // Solves
+  // Solves with before/after
   var vsEl = document.getElementById('vp-solves');
   vsEl.innerHTML = '';
   r.valetpe.solves.forEach(function(s) {
     var d = document.createElement('div'); d.className = 'solve';
     var ic = document.createElement('div'); ic.className = 'solve-icon'; ic.textContent = s.icon;
-    var bd = document.createElement('div');
+    var bd = document.createElement('div'); bd.style.flex = '1';
     var tt = document.createElement('div'); tt.className = 'solve-title'; tt.textContent = s.title;
     var ds = document.createElement('div'); ds.className = 'solve-desc'; ds.textContent = s.desc;
-    var sv = document.createElement('div'); sv.className = 'solve-save'; sv.textContent = s.number;
-    bd.appendChild(tt); bd.appendChild(ds); bd.appendChild(sv);
+    var ba = document.createElement('div'); ba.className = 'solve-before-after';
+    var bef = document.createElement('div'); bef.className = 'solve-ba before';
+    var befLbl = document.createElement('div'); befLbl.className = 'solve-ba-label'; befLbl.textContent = 'Without ValetPe';
+    var befTxt = document.createTextNode(s.before);
+    bef.appendChild(befLbl); bef.appendChild(befTxt);
+    var aft = document.createElement('div'); aft.className = 'solve-ba after';
+    var aftLbl = document.createElement('div'); aftLbl.className = 'solve-ba-label'; aftLbl.textContent = 'With ValetPe';
+    var aftTxt = document.createTextNode(s.after);
+    aft.appendChild(aftLbl); aft.appendChild(aftTxt);
+    ba.appendChild(bef); ba.appendChild(aft);
+    bd.appendChild(tt); bd.appendChild(ds); bd.appendChild(ba);
     d.appendChild(ic); d.appendChild(bd); vsEl.appendChild(d);
   });
 
@@ -627,64 +610,43 @@ function goBack() {
 
 function shareRep() {
   var brand = document.getElementById('d-name').textContent;
-  if (navigator.share) { navigator.share({ title: brand + ' post-purchase report - ValetPe', url: window.location.href }); }
+  if (navigator.share) { navigator.share({ title: brand + ' post-purchase revenue report - ValetPe', url: window.location.href }); }
   else { navigator.clipboard.writeText(window.location.href); alert('Link copied!'); }
 }
 
 function downloadCSV() {
   if (!_report || !_inputs) return;
   var r = _report;
-  var rtoRatePct = parseFloat(r.kpis.rto_rate_num) || 20;
-  var repeatRatePct = parseFloat(r.kpis.repeat_rate_num) || 25;
-  var impact = calcImpact(rtoRatePct, repeatRatePct, _inputs.gmvLakhs, _inputs.aov);
-
   var rows = [
-    ['ValetPe Post-Purchase Revenue Calculator', '', ''],
+    ['ValetPe Post-Purchase Revenue Calculator','',''],
     ['Brand', r.brand, ''],
     ['Report Date', new Date().toLocaleDateString('en-IN'), ''],
-    ['', '', ''],
-    ['YOUR INPUTS', '', ''],
+    ['','',''],
+    ['YOUR INPUTS','',''],
     ['Monthly Sales', 'Rs ' + _inputs.gmvLakhs + ' Lakhs', 'Entered by you'],
-    ['Average Order Value (AOV)', 'Rs ' + _inputs.aov, 'Entered by you'],
-    ['', '', ''],
-    ['CALCULATED NUMBERS', '', ''],
-    ['Monthly Orders', impact.monthlyOrders, 'Monthly GMV / AOV'],
-    ['Annual Orders', impact.annualOrders, 'Monthly x 12'],
-    ['Annual GMV', 'Rs ' + Math.round(impact.annualGmvRs/100000) + ' Lakhs', 'Monthly GMV x 12'],
-    ['Est. RTO Rate', rtoRatePct + '%', 'Based on public research'],
-    ['Annual RTOs', impact.annualRTOs, 'Annual orders x RTO rate'],
-    ['Annual RTO Cost', 'Rs ' + Math.round(impact.annualRTOcost/100000) + ' Lakhs', 'RTOs x (Rs 130 logistics + 20% order value)'],
-    ['Current Repeat Rate', repeatRatePct + '%', 'Based on public research'],
-    ['Target Repeat Rate', '38%', 'Industry benchmark for good PP'],
-    ['Annual Repeat Revenue Gap', 'Rs ' + Math.round(impact.annualRepeatOpp/100000) + ' Lakhs', 'Gap x annual orders x AOV x 22%'],
-    ['Total Annual Revenue at Risk', 'Rs ' + Math.round(impact.totalAtRisk/100000) + ' Lakhs', 'RTO cost + Repeat gap'],
-    ['Recoverable with ValetPe', 'Rs ' + Math.round(impact.totalRecoverable/100000) + ' Lakhs', '~55% of total at risk'],
-    ['Marketplace Commission Saved', 'Rs ' + Math.round(impact.commissionSaved/100000) + ' Lakhs', '27% of annual GMV'],
-    ['', '', ''],
-    ['ASSUMPTIONS USED', '', ''],
-    ['RTO logistics cost per order', 'Rs 130', 'Industry average'],
-    ['% of RTO order value unrecovered', '20%', 'Industry average'],
-    ['ValetPe RTO reduction', '30%', 'ValetPe benchmark'],
-    ['Target repeat rate', '38%', 'Industry benchmark for good post-purchase'],
-    ['Repeat conversion factor', '22%', 'Conservative estimate'],
-    ['ValetPe recovery rate', '55%', 'Of total revenue at risk'],
-    ['', '', ''],
-    ['DISCLAIMER', '', ''],
-    ['Figures calculated from your inputs using industry benchmarks.', '', ''],
-    ['RTO rates from public research — may not reflect exact current figures.', '', ''],
-    ['Contact valetpe.com for a brand-specific assessment.', '', '']
+    ['Average Order Value', 'Rs ' + _inputs.aov, 'Entered by you'],
+    ['','',''],
+    ['CALCULATED RESULTS','',''],
+    ['Monthly Orders', _impact.monthlyOrders, 'Monthly GMV / AOV'],
+    ['Annual Orders', _impact.annualOrders, ''],
+    ['Annual RTO Loss', 'Rs ' + (_impact.annualRTOcost/100000).toFixed(1) + ' L', 'Based on researched RTO rate'],
+    ['Annual Repeat Revenue Gap', 'Rs ' + (_impact.annualRepeatOpp/100000).toFixed(1) + ' L', 'Gap to 38% repeat rate'],
+    ['Total Annual Revenue at Risk', 'Rs ' + (_impact.totalAtRisk/100000).toFixed(1) + ' L', ''],
+    ['Recoverable with ValetPe', 'Rs ' + (_impact.totalRecoverable/100000).toFixed(1) + ' L', '~55% of total at risk'],
+    ['Marketplace Commission Equivalent', 'Rs ' + (_impact.commissionEquivalent/100000).toFixed(1) + ' L', '27% of annual GMV'],
+    ['','',''],
+    ['DISCLAIMER','',''],
+    ['Revenue figures calculated from your inputs using industry benchmarks.','',''],
+    ['RTO rates from public research. Contact valetpe.com for a customised assessment.','','']
   ];
-
   var csv = rows.map(function(row) {
     return row.map(function(cell) { return '"' + String(cell).replace(/"/g, '""') + '"'; }).join(',');
   }).join('\n');
   var blob = new Blob([csv], { type: 'text/csv' });
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
-  a.href = url;
-  a.download = r.brand.replace(/\s+/g, '-') + '-ValetPe-Revenue-Calculator.csv';
-  a.click();
-  URL.revokeObjectURL(url);
+  a.href = url; a.download = r.brand.replace(/\s+/g, '-') + '-ValetPe.csv';
+  a.click(); URL.revokeObjectURL(url);
 }
 
 document.getElementById('brand-input').addEventListener('keydown', function(e) { if (e.key === 'Enter') startScan(); });
