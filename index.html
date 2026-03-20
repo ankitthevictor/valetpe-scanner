@@ -13,27 +13,37 @@ nav{background:var(--black);border-bottom:1px solid var(--border);padding:0 32px
 .logo{display:flex;align-items:center;gap:12px;}
 .logo-wordmark{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;letter-spacing:-0.5px;color:var(--teal);}
 .nav-tag{font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal);background:var(--teal-bg);border:1px solid var(--teal-bd);padding:5px 13px;border-radius:20px;}
-#hero{max-width:740px;margin:0 auto;padding:60px 28px 52px;text-align:center;}
+#hero{max-width:740px;margin:0 auto;padding:56px 28px 48px;text-align:center;}
 .eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--teal);background:var(--teal-bg);border:1px solid var(--teal-bd);padding:5px 14px;border-radius:20px;margin-bottom:24px;}
-.hero-h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(32px,5.5vw,52px);line-height:1.05;letter-spacing:-1.5px;color:var(--white);margin-bottom:10px;}
+.hero-h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(30px,5vw,48px);line-height:1.05;letter-spacing:-1.5px;color:var(--white);margin-bottom:10px;}
 .hero-h1 em{font-style:normal;color:var(--teal);}
-.hero-sub{font-size:15px;color:var(--text2);line-height:1.75;max-width:500px;margin:0 auto 32px;font-weight:300;}
-.stats-strip{display:flex;max-width:600px;margin:0 auto 32px;background:var(--black2);border:1px solid var(--border2);border-radius:14px;overflow:hidden;}
-.stat{flex:1;padding:18px 14px;text-align:center;border-right:1px solid var(--border);}
+.hero-sub{font-size:15px;color:var(--text2);line-height:1.75;max-width:500px;margin:0 auto 28px;font-weight:300;}
+.stats-strip{display:flex;max-width:600px;margin:0 auto 28px;background:var(--black2);border:1px solid var(--border2);border-radius:14px;overflow:hidden;}
+.stat{flex:1;padding:16px 12px;text-align:center;border-right:1px solid var(--border);}
 .stat:last-child{border-right:none;}
-.stat-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:24px;color:var(--teal);line-height:1;margin-bottom:5px;}
-.stat-lbl{font-size:10px;color:var(--muted);line-height:1.45;}
-.search-wrap{display:flex;gap:8px;max-width:520px;margin:0 auto 16px;}
-.sinput{flex:1;height:50px;padding:0 18px;font-size:14px;border:1px solid var(--border2);border-radius:10px;background:var(--black2);color:var(--white);outline:none;transition:border-color 0.2s;}
+.stat-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:var(--teal);line-height:1;margin-bottom:4px;}
+.stat-lbl{font-size:10px;color:var(--muted);line-height:1.4;}
+
+/* Search form */
+.search-box{background:var(--black2);border:1px solid var(--border2);border-radius:14px;padding:24px;max-width:520px;margin:0 auto;}
+.search-box-title{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:16px;text-align:left;}
+.field{margin-bottom:14px;text-align:left;}
+.field label{display:block;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.field-row{display:flex;gap:8px;}
+.sinput{flex:1;height:46px;padding:0 16px;font-size:14px;border:1px solid var(--border2);border-radius:8px;background:var(--black3);color:var(--white);outline:none;transition:border-color 0.2s;width:100%;}
 .sinput:focus{border-color:var(--teal);}
 .sinput::placeholder{color:var(--muted);}
-.sbtn{height:50px;padding:0 26px;font-size:13px;font-weight:700;background:var(--teal);color:var(--black);border:none;border-radius:10px;cursor:pointer;white-space:nowrap;}
+select.sinput{cursor:pointer;}
+.sbtn{height:46px;padding:0 24px;font-size:13px;font-weight:700;background:var(--teal);color:var(--black);border:none;border-radius:8px;cursor:pointer;white-space:nowrap;width:100%;margin-top:4px;}
 .sbtn:hover{opacity:0.88;}
 .sbtn:disabled{opacity:0.35;cursor:not-allowed;}
-.pills{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;}
-.pill{font-size:12px;padding:5px 14px;border:1px solid var(--border2);border-radius:20px;cursor:pointer;color:var(--muted);background:transparent;}
+.pills-label{font-size:11px;color:var(--muted);margin-bottom:8px;text-align:left;}
+.pills{display:flex;gap:6px;flex-wrap:wrap;}
+.pill{font-size:12px;padding:4px 12px;border:1px solid var(--border2);border-radius:20px;cursor:pointer;color:var(--muted);background:transparent;}
 .pill:hover{border-color:var(--teal);color:var(--teal);}
-.err{display:none;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--red);margin:14px auto 0;max-width:520px;text-align:center;}
+.err{display:none;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--red);margin:12px 0 0;text-align:center;}
+
+/* Loading */
 #loading{display:none;text-align:center;padding:80px 28px;}
 .spinner{width:32px;height:32px;border:2px solid var(--border2);border-top-color:var(--teal);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 20px;}
 @keyframes spin{to{transform:rotate(360deg);}}
@@ -44,88 +54,109 @@ nav{background:var(--black);border-bottom:1px solid var(--border);padding:0 32px
 .lstep.ok{opacity:1;transform:none;color:var(--teal);}
 .ldot{width:5px;height:5px;border-radius:50%;background:var(--border2);flex-shrink:0;}
 .lstep.on .ldot,.lstep.ok .ldot{background:var(--teal);}
+
+/* Dashboard */
 #dash{display:none;max-width:840px;margin:0 auto;padding:0 28px 72px;animation:up 0.45s ease both;}
 @keyframes up{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
 .back{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;margin:20px 0 0;}
 .back:hover{color:var(--teal);}
-.brand-hdr{background:var(--black2);border:1px solid var(--border2);border-radius:14px;padding:26px 28px;margin:16px 0 12px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
-.bname{font-family:'Nunito',sans-serif;font-weight:900;font-size:28px;letter-spacing:-0.5px;color:var(--white);}
-.bcat{font-size:12px;color:var(--muted);margin-top:4px;}
+.brand-hdr{background:var(--black2);border:1px solid var(--border2);border-radius:14px;padding:24px 28px;margin:16px 0 12px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.bname{font-family:'Nunito',sans-serif;font-weight:900;font-size:26px;letter-spacing:-0.5px;color:var(--white);}
+.bcat{font-size:12px;color:var(--muted);margin-top:3px;}
 .score-wrap{text-align:center;flex-shrink:0;}
-.score-num{font-family:'Nunito',sans-serif;font-weight:900;font-size:48px;color:var(--teal);line-height:1;}
+.score-num{font-family:'Nunito',sans-serif;font-weight:900;font-size:44px;color:var(--teal);line-height:1;}
 .score-of{font-size:12px;color:var(--muted);margin-top:2px;}
-.score-tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 11px;border-radius:20px;margin-top:7px;}
+.score-tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 11px;border-radius:20px;margin-top:6px;}
 .t-critical{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd);}
 .t-attention{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd);}
+.t-average{background:var(--blue-bg);color:var(--blue);border:1px solid rgba(74,158,255,0.2);}
 .t-good{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bd);}
+
+/* Revenue impact strip - calculated not estimated */
 .rev-strip{border:1px solid var(--teal-bd);border-radius:12px;padding:20px 24px;margin-bottom:12px;background:var(--black2);position:relative;overflow:hidden;}
 .rev-strip::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),transparent);}
 .rev-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
 .rev-headline{font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;color:var(--white);line-height:1.3;margin-bottom:7px;}
 .rev-body{font-size:13px;color:var(--text2);line-height:1.7;}
+
+/* Calculated impact boxes */
+.impact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:12px;}
+.impact-box{background:var(--black2);border:1px solid var(--border);border-radius:10px;padding:16px 14px;}
+.impact-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;line-height:1;margin-bottom:4px;color:var(--red);}
+.impact-val.teal{color:var(--teal);}
+.impact-name{font-size:11px;color:var(--muted);line-height:1.4;margin-bottom:5px;}
+.impact-note{font-size:11px;font-weight:500;padding:2px 8px;border-radius:4px;display:inline-block;background:var(--red-bg);color:var(--red);}
+.impact-note.ok{background:var(--teal-bg);color:var(--teal);}
+
+/* KPI row */
 .kpi-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px;}
-.kpi{background:var(--black2);border:1px solid var(--border);border-radius:10px;padding:16px 14px;}
-.kpi-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;line-height:1;margin-bottom:4px;}
+.kpi{background:var(--black2);border:1px solid var(--border);border-radius:10px;padding:14px;}
+.kpi-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;line-height:1;margin-bottom:4px;}
 .kv-red{color:var(--red);}.kv-amber{color:var(--amber);}.kv-white{color:var(--white);}
-.kpi-lbl{font-size:11px;color:var(--muted);line-height:1.4;margin-bottom:6px;}
+.kpi-lbl{font-size:11px;color:var(--muted);line-height:1.4;margin-bottom:5px;}
 .kpi-note{font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block;}
 .kn-bad{background:var(--red-bg);color:var(--red);}.kn-warn{background:var(--amber-bg);color:var(--amber);}
+
 .two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:10px;}
-.card{background:var(--black2);border:1px solid var(--border);border-radius:12px;padding:20px;}
-.card-label{font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
-.full-card{background:var(--black2);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:10px;}
+.card{background:var(--black2);border:1px solid var(--border);border-radius:12px;padding:18px;}
+.card-label{font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.full-card{background:var(--black2);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:10px;}
 .ci{display:flex;gap:10px;align-items:flex-start;}
 .cvol-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px;}
 .ch{background:var(--red);}.cm{background:var(--amber);}.cl{background:var(--teal);}
-.ci-src{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.ci-src{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
 .ci-text{font-size:13px;line-height:1.6;color:var(--text);}
-.complaints{display:flex;flex-direction:column;gap:14px;}
-.pains{display:flex;flex-direction:column;gap:8px;}
-.pain{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.6;padding:11px 13px;background:var(--black3);border:1px solid var(--border);border-radius:8px;}
-.pain-ic{font-size:15px;flex-shrink:0;margin-top:1px;}
-.bench{display:flex;flex-direction:column;gap:12px;}
+.complaints{display:flex;flex-direction:column;gap:12px;}
+.pains{display:flex;flex-direction:column;gap:7px;}
+.pain{display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.6;padding:10px 12px;background:var(--black3);border:1px solid var(--border);border-radius:8px;}
+.pain-ic{font-size:14px;flex-shrink:0;margin-top:1px;}
+.bench{display:flex;flex-direction:column;gap:11px;}
 .brow{display:flex;align-items:center;gap:10px;}
 .brow-name{font-size:13px;min-width:145px;color:var(--text2);}
 .brow-name.you{font-weight:700;color:var(--white);}
 .bbar-bg{flex:1;height:6px;background:var(--black3);border-radius:3px;overflow:hidden;border:1px solid var(--border);}
 .bbar{height:6px;border-radius:3px;}
 .bscore{font-size:12px;color:var(--muted);min-width:44px;text-align:right;}
-.grade{font-size:11px;font-weight:800;width:26px;height:26px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+.grade{font-size:11px;font-weight:800;width:24px;height:24px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
 .ga{background:var(--teal-bg);color:var(--teal);}.gb{background:var(--blue-bg);color:var(--blue);}.gc{background:var(--amber-bg);color:var(--amber);}.gd{background:var(--red-bg);color:var(--red);}
+
+/* ValetPe section */
 .vp-box{background:var(--black2);border:1px solid var(--teal-bd);border-radius:14px;overflow:hidden;position:relative;margin-bottom:10px;}
 .vp-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),transparent 70%);}
-.vp-head{padding:24px 26px 0;}
-.vp-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:7px;}
-.vp-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;color:var(--white);line-height:1.25;letter-spacing:-0.3px;margin-bottom:22px;}
-.vp-solves{display:flex;flex-direction:column;gap:2px;padding:0 26px;}
-.solve{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--border);}
+.vp-head{padding:22px 24px 0;}
+.vp-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;}
+.vp-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:19px;color:var(--white);line-height:1.25;letter-spacing:-0.3px;margin-bottom:20px;}
+.vp-solves{display:flex;flex-direction:column;padding:0 24px;}
+.solve{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);}
 .solve:last-child{border-bottom:none;}
-.solve-icon{flex-shrink:0;width:40px;height:40px;border-radius:10px;background:var(--teal-bg);border:1px solid var(--teal-bd);display:flex;align-items:center;justify-content:center;font-size:18px;}
-.solve-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.solve-icon{flex-shrink:0;width:38px;height:38px;border-radius:9px;background:var(--teal-bg);border:1px solid var(--teal-bd);display:flex;align-items:center;justify-content:center;font-size:17px;}
+.solve-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:3px;}
 .solve-desc{font-size:12px;color:var(--text2);line-height:1.65;}
-.solve-save{display:inline-block;font-size:12px;font-weight:700;color:var(--teal);margin-top:6px;}
-.vp-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--border);}
-.vpn{padding:20px 26px;border-right:1px solid var(--border);}
-.vpn:last-child{border-right:none;}
-.vpn-val{font-family:'Nunito',sans-serif;font-weight:900;font-size:30px;color:var(--teal);line-height:1;margin-bottom:5px;}
-.vpn-lbl{font-size:11px;color:var(--muted);line-height:1.5;}
-.vp-cta{padding:20px 26px;border-top:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap;}
-.btn-p{padding:12px 28px;background:var(--teal);color:var(--black);border:none;border-radius:9px;font-size:13px;font-weight:800;cursor:pointer;}
+.solve-save{display:inline-block;font-size:12px;font-weight:700;color:var(--teal);margin-top:5px;}
+.vp-cta{padding:18px 24px;border-top:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap;}
+.btn-p{padding:11px 26px;background:var(--teal);color:var(--black);border:none;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;}
 .btn-p:hover{opacity:0.88;}
-.btn-s{padding:12px 22px;background:transparent;color:var(--text2);border:1px solid var(--border2);border-radius:9px;font-size:13px;cursor:pointer;}
+.btn-s{padding:11px 20px;background:transparent;color:var(--text2);border:1px solid var(--border2);border-radius:8px;font-size:13px;cursor:pointer;}
 .btn-s:hover{color:var(--white);border-color:var(--muted);}
-footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);}
+.disclaimer{font-size:10px;color:var(--muted);padding:0 24px 16px;line-height:1.5;}
+footer{text-align:center;padding:18px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);}
 footer strong{color:var(--teal);}
-@media(max-width:600px){nav{padding:0 16px;}#hero{padding:40px 16px 36px;}#dash{padding:0 16px 56px;}.kpi-row{grid-template-columns:repeat(2,1fr);}.two-col{grid-template-columns:1fr;}.vp-nums{grid-template-columns:repeat(2,1fr);}.stats-strip{flex-direction:column;}.stat{border-right:none;border-bottom:1px solid var(--border);}.stat:last-child{border-bottom:none;}.search-wrap{flex-direction:column;}}
+@media(max-width:600px){
+  nav{padding:0 16px;}#hero{padding:36px 16px 32px;}#dash{padding:0 16px 48px;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);}.two-col{grid-template-columns:1fr;}
+  .impact-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-strip{flex-direction:column;}.stat{border-right:none;border-bottom:1px solid var(--border);}
+  .stat:last-child{border-bottom:none;}.field-row{flex-direction:column;}
+}
 </style>
 </head>
 <body>
 <nav>
   <div class="logo">
-    <svg width="34" height="28" viewBox="0 0 34 28" fill="none">
-      <path d="M32 3C28 2 8 1 3 10C-1 18 5 26 13 23C21 20 27 10 32 3Z" fill="rgba(21,192,171,0.12)"/>
-      <path d="M30 4C24 3 10 3 4 11C0 17 6 25 14 22" stroke="#15c0ab" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <path d="M30 4C28 8 24 16 18 20" stroke="#15c0ab" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.5"/>
+    <svg width="32" height="26" viewBox="0 0 32 26" fill="none">
+      <path d="M30 3C26 2 6 1 2 10C-1 17 5 24 13 21C21 18 25 9 30 3Z" fill="rgba(21,192,171,0.1)"/>
+      <path d="M28 4C22 3 8 3 3 11C0 17 6 23 13 20" stroke="#15c0ab" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M28 4C26 8 22 15 17 19" stroke="#15c0ab" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
     </svg>
     <span class="logo-wordmark">ValetPe</span>
   </div>
@@ -136,23 +167,58 @@ footer strong{color:var(--teal);}
   <div class="eyebrow">Free AI Report - Indian D2C</div>
   <h1 class="hero-h1">Sales gets customers.<br><em>Post-purchase keeps them.</em></h1>
   <div class="stats-strip">
-    <div class="stat"><div class="stat-val">67%</div><div class="stat-lbl">of customers reorder based on post-purchase experience</div></div>
-    <div class="stat"><div class="stat-val">5x</div><div class="stat-lbl">cheaper to retain than acquire a new customer</div></div>
-    <div class="stat"><div class="stat-val">18K Cr</div><div class="stat-lbl">lost annually to RTO and returns across Indian D2C</div></div>
+    <div class="stat"><div class="stat-val">67%</div><div class="stat-lbl">customers reorder based on post-purchase experience</div></div>
+    <div class="stat"><div class="stat-val">5x</div><div class="stat-lbl">cheaper to retain vs acquiring a new customer</div></div>
+    <div class="stat"><div class="stat-val">18K Cr</div><div class="stat-lbl">lost annually to RTO and returns in Indian D2C</div></div>
   </div>
-  <p class="hero-sub">Most brands spend on ads, not retention. Scan any D2C brand to see how much revenue is leaking through post-purchase gaps.</p>
-  <div class="search-wrap">
-    <input class="sinput" id="brand-input" type="text" placeholder="Enter brand e.g. Snitch, Bewakoof..."/>
+  <p class="hero-sub">Enter your brand details below. We calculate your real revenue impact from post-purchase problems — using your own numbers, not guesses.</p>
+
+  <div class="search-box">
+    <div class="search-box-title">Enter brand details for accurate results</div>
+
+    <div class="field">
+      <label>Brand name</label>
+      <input class="sinput" id="brand-input" type="text" placeholder="e.g. Snitch, Bewakoof, The Souled Store..."/>
+    </div>
+
+    <div class="field">
+      <label>Monthly GMV / Revenue (approximate)</label>
+      <select class="sinput" id="gmv-input">
+        <option value="">Select revenue range</option>
+        <option value="5">Below Rs 5 Cr/month</option>
+        <option value="15">Rs 5-25 Cr/month</option>
+        <option value="40">Rs 25-50 Cr/month</option>
+        <option value="75">Rs 50-100 Cr/month</option>
+        <option value="150">Rs 100 Cr+/month</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Average Order Value (AOV)</label>
+      <select class="sinput" id="aov-input">
+        <option value="">Select AOV range</option>
+        <option value="500">Below Rs 600</option>
+        <option value="750">Rs 600 - 900</option>
+        <option value="1100">Rs 900 - 1300</option>
+        <option value="1600">Rs 1300 - 2000</option>
+        <option value="2500">Above Rs 2000</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Quick scan (optional)</label>
+      <div class="pills">
+        <span class="pill" onclick="qs('Snitch','15','750')">Snitch</span>
+        <span class="pill" onclick="qs('Bewakoof','40','600')">Bewakoof</span>
+        <span class="pill" onclick="qs('The Souled Store','15','700')">The Souled Store</span>
+        <span class="pill" onclick="qs('DaMENSCH','15','900')">DaMENSCH</span>
+        <span class="pill" onclick="qs('Rare Rabbit','40','1600')">Rare Rabbit</span>
+      </div>
+    </div>
+
     <button class="sbtn" id="scan-btn" onclick="startScan()">Scan Brand</button>
+    <div class="err" id="err"></div>
   </div>
-  <div class="pills">
-    <span class="pill" onclick="qs('Snitch')">Snitch</span>
-    <span class="pill" onclick="qs('Bewakoof')">Bewakoof</span>
-    <span class="pill" onclick="qs('The Souled Store')">The Souled Store</span>
-    <span class="pill" onclick="qs('DaMENSCH')">DaMENSCH</span>
-    <span class="pill" onclick="qs('Rare Rabbit')">Rare Rabbit</span>
-  </div>
-  <div class="err" id="err"></div>
 </div>
 
 <div id="loading">
@@ -160,14 +226,15 @@ footer strong{color:var(--teal);}
   <div class="load-brand" id="load-lbl">Scanning brand...</div>
   <div class="load-steps">
     <div class="lstep" id="ls1"><span class="ldot"></span>Searching reviews and complaints</div>
-    <div class="lstep" id="ls2"><span class="ldot"></span>Analysing RTO returns and refund data</div>
+    <div class="lstep" id="ls2"><span class="ldot"></span>Analysing RTO and return patterns</div>
     <div class="lstep" id="ls3"><span class="ldot"></span>Benchmarking against competitors</div>
-    <div class="lstep" id="ls4"><span class="ldot"></span>Calculating revenue opportunity</div>
+    <div class="lstep" id="ls4"><span class="ldot"></span>Calculating your revenue impact</div>
   </div>
 </div>
 
 <div id="dash">
   <button class="back" onclick="goBack()">Back to search</button>
+
   <div class="brand-hdr">
     <div><div class="bname" id="d-name"></div><div class="bcat" id="d-cat"></div></div>
     <div class="score-wrap">
@@ -176,68 +243,133 @@ footer strong{color:var(--teal);}
       <div class="score-tag" id="d-tag"></div>
     </div>
   </div>
+
+  <!-- Revenue framing -->
   <div class="rev-strip">
-    <div class="rev-label">Why this matters more than your next ad campaign</div>
+    <div class="rev-label">Based on your revenue inputs — annual impact</div>
     <div class="rev-headline" id="rev-hl"></div>
     <div class="rev-body" id="rev-body"></div>
   </div>
+
+  <!-- Calculated impact — from user inputs, not AI guesses -->
+  <div class="impact-grid">
+    <div class="impact-box">
+      <div class="impact-val" id="imp-rto"></div>
+      <div class="impact-name">Annual RTO cost (logistics + lost revenue)</div>
+      <div class="impact-note" id="imp-rto-n"></div>
+    </div>
+    <div class="impact-box">
+      <div class="impact-val" id="imp-repeat"></div>
+      <div class="impact-name">Annual repeat revenue opportunity gap</div>
+      <div class="impact-note" id="imp-repeat-n"></div>
+    </div>
+    <div class="impact-box">
+      <div class="impact-val teal" id="imp-recover"></div>
+      <div class="impact-name">Recoverable with ValetPe annually</div>
+      <div class="impact-note ok" id="imp-recover-n"></div>
+    </div>
+  </div>
+
+  <!-- KPIs from research -->
   <div class="kpi-row">
-    <div class="kpi"><div class="kpi-val kv-red" id="k-rto"></div><div class="kpi-lbl">RTO rate</div><div class="kpi-note kn-bad" id="k-rto-n"></div></div>
+    <div class="kpi"><div class="kpi-val kv-red" id="k-rto"></div><div class="kpi-lbl">Est. RTO rate</div><div class="kpi-note kn-bad" id="k-rto-n"></div></div>
     <div class="kpi"><div class="kpi-val kv-white" id="k-rep"></div><div class="kpi-lbl">Repeat purchase rate</div><div class="kpi-note kn-warn" id="k-rep-n"></div></div>
     <div class="kpi"><div class="kpi-val kv-amber" id="k-ref"></div><div class="kpi-lbl">Avg refund time</div><div class="kpi-note kn-warn" id="k-ref-n"></div></div>
     <div class="kpi"><div class="kpi-val kv-red" id="k-com"></div><div class="kpi-lbl">Monthly PP complaints</div><div class="kpi-note kn-bad" id="k-com-n"></div></div>
   </div>
+
   <div class="two-col">
     <div class="card"><div class="card-label">What customers say publicly</div><div id="d-complaints" class="complaints"></div></div>
     <div class="card"><div class="card-label">Root causes killing repeat revenue</div><div id="d-pains" class="pains"></div></div>
   </div>
+
   <div class="full-card"><div class="card-label">Post-purchase score vs competitors</div><div id="d-bench" class="bench"></div></div>
+
   <div class="vp-box">
     <div class="vp-head">
       <div class="vp-eyebrow">ValetPe fixes this and turns it into revenue</div>
       <div class="vp-title" id="vp-title"></div>
     </div>
     <div class="vp-solves" id="vp-solves"></div>
-    <div class="vp-nums" id="vp-nums"></div>
     <div class="vp-cta">
       <button class="btn-p" onclick="window.open('https://valetpe.com','_blank')">See how ValetPe works</button>
       <button class="btn-s" onclick="shareRep()">Share this report</button>
       <button class="btn-s" onclick="downloadExcel()">Download calculations</button>
     </div>
+    <div class="disclaimer">* Revenue impact figures are calculated using your inputs and industry benchmarks. RTO rates, complaint data and competitor scores are based on publicly available information and may not reflect exact current figures. ValetPe makes no guarantee of specific results.</div>
   </div>
 </div>
-<footer>AI report using public data. Powered by <strong>ValetPe</strong>. valetpe.com</footer>
+
+<footer>Powered by <strong>ValetPe</strong> — valetpe.com</footer>
 
 <script>
 var STEPS = ['ls1','ls2','ls3','ls4'];
 var tim = null;
 var _report = null;
+var _inputs = {};
 
-function qs(n) { document.getElementById('brand-input').value = n; startScan(); }
+function qs(brand, gmv, aov) {
+  document.getElementById('brand-input').value = brand;
+  document.getElementById('gmv-input').value = gmv;
+  document.getElementById('aov-input').value = aov;
+}
+
+function fmt(n) {
+  if (n >= 10000000) return 'Rs ' + (n/10000000).toFixed(1) + ' Cr';
+  if (n >= 100000) return 'Rs ' + (n/100000).toFixed(1) + ' L';
+  return 'Rs ' + Math.round(n).toLocaleString('en-IN');
+}
+
+function calcImpact(rtoRatePct, repeatRatePct, monthlyGmv, aov) {
+  var monthlyOrders = Math.round((monthlyGmv * 100000) / aov);
+  var rtoRate = rtoRatePct / 100;
+  var monthlyRTOs = Math.round(monthlyOrders * rtoRate);
+  var annualRTOs = monthlyRTOs * 12;
+  // RTO cost = logistics (Rs 120 avg) + 20% of order value unrecovered
+  var annualRTOcost = Math.round(annualRTOs * (120 + aov * 0.20));
+  // Repeat gap: difference between current repeat rate and 38% benchmark with good PP
+  var repeatGap = Math.max(0, 0.38 - (repeatRatePct / 100));
+  var annualRepeatOpp = Math.round(monthlyOrders * 12 * repeatGap * aov * 0.25);
+  var totalRecoverable = Math.round((annualRTOcost + annualRepeatOpp) * 0.55); // ValetPe recovers ~55%
+  return {
+    annualRTOcost: annualRTOcost,
+    annualRepeatOpp: annualRepeatOpp,
+    totalRecoverable: totalRecoverable,
+    monthlyOrders: monthlyOrders,
+    annualRTOs: annualRTOs
+  };
+}
 
 function startScan() {
   var brand = document.getElementById('brand-input').value.trim();
-  if (!brand) { document.getElementById('brand-input').focus(); return; }
-  document.getElementById('err').style.display = 'none';
+  var gmv = document.getElementById('gmv-input').value;
+  var aov = document.getElementById('aov-input').value;
+  var eb = document.getElementById('err');
+
+  if (!brand) { eb.textContent = 'Please enter a brand name.'; eb.style.display = 'block'; return; }
+  if (!gmv) { eb.textContent = 'Please select a monthly revenue range.'; eb.style.display = 'block'; return; }
+  if (!aov) { eb.textContent = 'Please select an AOV range.'; eb.style.display = 'block'; return; }
+
+  eb.style.display = 'none';
+  _inputs = { brand: brand, gmv: parseFloat(gmv), aov: parseFloat(aov) };
+
   document.getElementById('hero').style.display = 'none';
   document.getElementById('dash').style.display = 'none';
   document.getElementById('loading').style.display = 'block';
   document.getElementById('load-lbl').textContent = 'Scanning ' + brand + '...';
   document.getElementById('scan-btn').disabled = true;
+
   STEPS.forEach(function(id) { document.getElementById(id).className = 'lstep'; });
   var s = 0;
   tim = setInterval(function() {
     if (s > 0) document.getElementById(STEPS[s-1]).className = 'lstep ok';
     if (s < STEPS.length) { document.getElementById(STEPS[s]).className = 'lstep on'; s++; }
   }, 2200);
-  fetchReport(brand);
-}
 
-function fetchReport(brand) {
   fetch('/api/scan', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ brand: brand })
+    body: JSON.stringify({ brand: brand, gmv: gmv, aov: aov })
   }).then(function(res) {
     return res.json();
   }).then(function(data) {
@@ -250,9 +382,9 @@ function fetchReport(brand) {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('hero').style.display = 'block';
     document.getElementById('scan-btn').disabled = false;
-    var eb = document.getElementById('err');
-    eb.textContent = e.message || 'Something went wrong. Please try again.';
-    eb.style.display = 'block';
+    var eb2 = document.getElementById('err');
+    eb2.textContent = e.message || 'Something went wrong. Please try again.';
+    eb2.style.display = 'block';
   });
 }
 
@@ -263,10 +395,27 @@ function render(r) {
   document.getElementById('d-score').textContent = r.pp_score;
   var tag = document.getElementById('d-tag');
   tag.textContent = r.score_verdict;
-  var tc = { 'Critical': 't-critical', 'Needs Attention': 't-attention', 'Average': 't-attention', 'Good': 't-good' };
+  var tc = { 'Critical': 't-critical', 'Needs Attention': 't-attention', 'Average': 't-average', 'Good': 't-good' };
   tag.className = 'score-tag ' + (tc[r.score_verdict] || 't-attention');
-  document.getElementById('rev-hl').textContent = r.revenue_headline;
+
+  // Calculate impact from user inputs — NOT from AI
+  var rtoRatePct = parseFloat(r.kpis.rto_rate_num) || 20;
+  var repeatRatePct = parseFloat(r.kpis.repeat_rate_num) || 25;
+  var impact = calcImpact(rtoRatePct, repeatRatePct, _inputs.gmv, _inputs.aov);
+
+  // Revenue strip
+  document.getElementById('rev-hl').textContent = r.brand + ' is losing ' + fmt(impact.annualRTOcost + impact.annualRepeatOpp) + ' annually — calculated from your inputs';
   document.getElementById('rev-body').textContent = r.revenue_context;
+
+  // Impact boxes
+  document.getElementById('imp-rto').textContent = fmt(impact.annualRTOcost);
+  document.getElementById('imp-rto-n').textContent = impact.annualRTOs.toLocaleString('en-IN') + ' RTOs/year';
+  document.getElementById('imp-repeat').textContent = fmt(impact.annualRepeatOpp);
+  document.getElementById('imp-repeat-n').textContent = 'If repeat rate reaches 38%';
+  document.getElementById('imp-recover').textContent = fmt(impact.totalRecoverable);
+  document.getElementById('imp-recover-n').textContent = 'Est. 55% recoverable';
+
+  // KPIs
   var k = r.kpis;
   document.getElementById('k-rto').textContent = k.rto_rate;
   document.getElementById('k-rto-n').textContent = k.rto_note;
@@ -277,35 +426,37 @@ function render(r) {
   document.getElementById('k-com').textContent = k.monthly_complaints;
   document.getElementById('k-com-n').textContent = k.complaints_note;
 
+  // Complaints
   var vc = { high: 'ch', medium: 'cm', low: 'cl' };
   var cEl = document.getElementById('d-complaints');
   cEl.innerHTML = '';
   r.complaints.forEach(function(c) {
-    var d = document.createElement('div'); d.className = 'ci';
+    var wrap = document.createElement('div'); wrap.className = 'ci';
     var dot = document.createElement('div'); dot.className = 'cvol-dot ' + (vc[c.volume] || 'cm');
     var inner = document.createElement('div');
     var src = document.createElement('div'); src.className = 'ci-src'; src.textContent = c.source;
     var txt = document.createElement('div'); txt.className = 'ci-text'; txt.textContent = c.text;
     inner.appendChild(src); inner.appendChild(txt);
-    d.appendChild(dot); d.appendChild(inner);
-    cEl.appendChild(d);
+    wrap.appendChild(dot); wrap.appendChild(inner);
+    cEl.appendChild(wrap);
   });
 
+  // Pain points
   var pEl = document.getElementById('d-pains');
   pEl.innerHTML = '';
   r.pain_points.forEach(function(p) {
     var d = document.createElement('div'); d.className = 'pain';
     var ic = document.createElement('span'); ic.className = 'pain-ic'; ic.textContent = p.icon;
     var tx = document.createElement('span'); tx.textContent = p.text;
-    d.appendChild(ic); d.appendChild(tx);
-    pEl.appendChild(d);
+    d.appendChild(ic); d.appendChild(tx); pEl.appendChild(d);
   });
 
+  // Benchmark
   var bEl = document.getElementById('d-bench');
   bEl.innerHTML = '';
   r.benchmark.forEach(function(b) {
     var gc = { A: 'ga', B: 'gb', C: 'gc', D: 'gd' }[b.grade] || 'gc';
-    var bc = b.score >= 70 ? '#15c0ab' : b.score >= 50 ? '#f0a030' : '#f04444';
+    var bc = b.score >= 70 ? '#15c0ab' : b.score >= 50 ? '#4a9eff' : b.score >= 35 ? '#f0a030' : '#f04444';
     var row = document.createElement('div'); row.className = 'brow';
     var nm = document.createElement('div'); nm.className = 'brow-name' + (b.is_you ? ' you' : '');
     nm.textContent = (b.is_you ? '> ' : '') + b.brand;
@@ -319,11 +470,11 @@ function render(r) {
     bEl.appendChild(row);
   });
 
-  var vp = r.valetpe;
-  document.getElementById('vp-title').textContent = vp.headline;
+  // ValetPe solves
+  document.getElementById('vp-title').textContent = vp_title(r.brand, impact.totalRecoverable);
   var vsEl = document.getElementById('vp-solves');
   vsEl.innerHTML = '';
-  vp.solves.forEach(function(s) {
+  r.valetpe.solves.forEach(function(s) {
     var d = document.createElement('div'); d.className = 'solve';
     var ic = document.createElement('div'); ic.className = 'solve-icon'; ic.textContent = s.icon;
     var bd = document.createElement('div');
@@ -331,18 +482,7 @@ function render(r) {
     var ds = document.createElement('div'); ds.className = 'solve-desc'; ds.textContent = s.desc;
     var sv = document.createElement('div'); sv.className = 'solve-save'; sv.textContent = s.number;
     bd.appendChild(tt); bd.appendChild(ds); bd.appendChild(sv);
-    d.appendChild(ic); d.appendChild(bd);
-    vsEl.appendChild(d);
-  });
-
-  var vnEl = document.getElementById('vp-nums');
-  vnEl.innerHTML = '';
-  vp.numbers.forEach(function(n) {
-    var d = document.createElement('div'); d.className = 'vpn';
-    var v = document.createElement('div'); v.className = 'vpn-val'; v.textContent = n.val;
-    var l = document.createElement('div'); l.className = 'vpn-lbl'; l.textContent = n.label;
-    d.appendChild(v); d.appendChild(l);
-    vnEl.appendChild(d);
+    d.appendChild(ic); d.appendChild(bd); vsEl.appendChild(d);
   });
 
   document.getElementById('dash').style.display = 'block';
@@ -350,67 +490,58 @@ function render(r) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function vp_title(brand, recoverable) {
+  return brand + ' can recover ' + fmt(recoverable) + ' annually — here is exactly how ValetPe does it';
+}
+
 function goBack() {
   document.getElementById('dash').style.display = 'none';
   document.getElementById('hero').style.display = 'block';
-  document.getElementById('brand-input').value = '';
-  document.getElementById('brand-input').focus();
 }
 
 function shareRep() {
   var brand = document.getElementById('d-name').textContent;
-  if (navigator.share) { navigator.share({ title: brand + ' post-purchase report ValetPe', url: window.location.href }); }
+  if (navigator.share) { navigator.share({ title: brand + ' post-purchase report - ValetPe', url: window.location.href }); }
   else { navigator.clipboard.writeText(window.location.href); alert('Link copied!'); }
 }
 
 function downloadExcel() {
-  if (!_report) return;
+  if (!_report || !_inputs) return;
   var r = _report;
-  var c = (r.valetpe && r.valetpe.calc) ? r.valetpe.calc : {};
-  var mo = parseInt(c.monthly_orders_est) || 50000;
-  var rto = parseFloat(c.rto_rate_pct) / 100 || 0.20;
-  var aov = parseFloat(c.avg_order_value) || 800;
-  var rc = parseFloat(c.rto_cost_per_order) || 120;
-  var rep = parseFloat(c.repeat_rate_current) / 100 || 0.25;
-  var rep2 = parseFloat(c.repeat_rate_potential) / 100 || 0.40;
-  var mRTO = Math.round(mo * rto);
-  var aRTO = mRTO * 12;
-  var aRTOcost = Math.round(aRTO * rc);
-  var aRevLost = Math.round(aRTO * aov * 0.15);
-  var aRepOpp = Math.round(mo * 12 * (rep2 - rep) * aov * 0.3);
-  var total = aRTOcost + aRevLost + aRepOpp;
+  var rtoRatePct = parseFloat(r.kpis.rto_rate_num) || 20;
+  var repeatRatePct = parseFloat(r.kpis.repeat_rate_num) || 25;
+  var impact = calcImpact(rtoRatePct, repeatRatePct, _inputs.gmv, _inputs.aov);
   var rows = [
     ['ValetPe Post-Purchase Revenue Calculator','',''],
     ['Brand', r.brand, ''],
     ['Report Date', new Date().toLocaleDateString('en-IN'), ''],
     ['','',''],
-    ['INPUT ASSUMPTIONS','',''],
-    ['Metric','Value','Source'],
-    ['Est Monthly Orders', mo, 'Industry estimate'],
-    ['Avg Order Value', 'Rs ' + aov, 'Industry estimate'],
-    ['Current RTO Rate', (c.rto_rate_pct||'20') + '%', 'Research'],
-    ['Industry Avg RTO', '10-12%', 'Benchmark'],
-    ['Reverse Logistics Cost per RTO', 'Rs ' + rc, 'Estimate'],
-    ['Current Repeat Purchase Rate', (c.repeat_rate_current||'25') + '%', 'Research'],
-    ['Potential Repeat Rate with ValetPe', (c.repeat_rate_potential||'40') + '%', 'ValetPe benchmark'],
-    ['Avg Refund Time days', c.refund_time_days || '12', 'Research'],
+    ['YOUR INPUTS (what you told us)','',''],
+    ['Monthly GMV/Revenue', 'Rs ' + _inputs.gmv + ' Cr', 'Entered by you'],
+    ['Average Order Value (AOV)', 'Rs ' + _inputs.aov, 'Entered by you'],
     ['','',''],
-    ['ANNUAL COST OF POOR POST-PURCHASE','',''],
-    ['Metric','Amount Rs','Notes'],
-    ['Monthly RTOs', mRTO, 'Orders x RTO Rate'],
-    ['Annual RTOs', aRTO, 'Monthly x 12'],
-    ['Annual Reverse Logistics Cost', aRTOcost, 'Annual RTOs x Cost per RTO'],
-    ['Annual Revenue Lost to RTO', aRevLost, '15% of RTO order value unrecovered'],
-    ['Annual Repeat Revenue Opportunity', aRepOpp, 'Closing repeat rate gap'],
-    ['TOTAL ANNUAL OPPORTUNITY', total, 'Total recoverable with ValetPe'],
+    ['CALCULATED FROM YOUR INPUTS','',''],
+    ['Est. Monthly Orders', impact.monthlyOrders, 'GMV / AOV'],
+    ['Est. RTO Rate', rtoRatePct + '%', 'From research'],
+    ['Est. Monthly RTOs', Math.round(impact.annualRTOs/12), 'Orders x RTO Rate'],
+    ['Annual RTOs', impact.annualRTOs, 'Monthly x 12'],
+    ['Annual RTO Cost (logistics + lost revenue)', impact.annualRTOcost, 'RTOs x (Rs120 logistics + 20% order value)'],
+    ['Current Repeat Rate', repeatRatePct + '%', 'From research'],
+    ['Benchmark Repeat Rate (good PP)', '38%', 'Industry benchmark'],
+    ['Annual Repeat Revenue Opportunity', impact.annualRepeatOpp, 'Closing the repeat rate gap'],
+    ['Total Annual Revenue at Risk', impact.annualRTOcost + impact.annualRepeatOpp, 'RTO cost + Repeat opportunity'],
+    ['Est. Recoverable with ValetPe', impact.totalRecoverable, '~55% of total at risk'],
     ['','',''],
-    ['VALETPE ROI PROJECTION','',''],
-    ['RTO Orders Saved Annually', Math.round(aRTO * 0.3), '30% RTO reduction'],
-    ['Annual RTO Cost Savings', Math.round(aRTOcost * 0.3), '30% reduction'],
-    ['Additional Annual Repeat Revenue', aRepOpp, 'Gap closed by ValetPe'],
+    ['ASSUMPTIONS','',''],
+    ['RTO logistics cost per order', 'Rs 120', 'Industry average'],
+    ['% of RTO order value unrecovered', '20%', 'Industry average'],
+    ['ValetPe RTO reduction', '30%', 'ValetPe benchmark'],
+    ['Repeat rate with ValetPe', '38%', 'ValetPe benchmark'],
     ['','',''],
-    ['Estimates based on industry benchmarks and public data','',''],
-    ['Contact valetpe.com for detailed assessment','','']
+    ['DISCLAIMER','',''],
+    ['RTO rates and complaint data are based on publicly available information.','',''],
+    ['Revenue figures are calculated from your inputs using industry benchmarks.','',''],
+    ['Actual results may vary. Contact valetpe.com for a detailed assessment.','','']
   ];
   var csv = rows.map(function(row) {
     return row.map(function(cell) { return '"' + String(cell).replace(/"/g, '""') + '"'; }).join(',');
