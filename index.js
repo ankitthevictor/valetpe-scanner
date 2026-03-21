@@ -7,116 +7,80 @@ const API_KEY = process.env.ANTHROPIC_API_KEY;
 const PORT = process.env.PORT || 3000;
 const HTML = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
 
-var KNOWN_SCORES = {
-  'snitch': 42, 'bewakoof': 35, 'the souled store': 55, 'souled store': 55,
-  'rare rabbit': 60, 'the bear house': 58, 'bear house': 58,
-  'damensch': 65, 'xyxx': 68, 'urbanic': 45,
-  'minimalist': 72, 'plum': 70, 'mcaffeine': 68, 'dot and key': 66,
-  'boat': 52, 'noise': 50
+var SCORES = {
+  'snitch':42,'bewakoof':35,'the souled store':55,'souled store':55,
+  'rare rabbit':60,'the bear house':58,'bear house':58,
+  'damensch':65,'xyxx':68,'urbanic':45,
+  'minimalist':72,'plum':70,'mcaffeine':68,'dot and key':66,
+  'boat':52,'noise':50
 };
 
-function gradeFromScore(s) {
-  return s >= 70 ? 'A' : s >= 55 ? 'B' : s >= 40 ? 'C' : 'D';
-}
+function grade(s){return s>=70?'A':s>=55?'B':s>=40?'C':'D';}
+function verdict(s){return s>=70?'Good':s>=50?'Average':s>=30?'Needs Attention':'Critical';}
 
-function verdictFromScore(s) {
-  return s >= 70 ? 'Good' : s >= 50 ? 'Average' : s >= 30 ? 'Needs Attention' : 'Critical';
-}
+function buildPrompt(brand, ig) {
+  var ks = SCORES[brand.toLowerCase()];
+  var scoreRule = ks
+    ? 'pp_score MUST be exactly ' + ks
+    : 'Calculate pp_score: Start 100. Deduct 20 if RTO above 20%, 10 if 15-20%. Deduct 15 if refund above 15 days, 8 if 10-15 days. Deduct 10 if repeat below 20%, 5 if 20-30%. Deduct 8 for high complaints. Deduct 5 for poor return portal.';
 
-function buildPrompt(brand) {
-  var knownScore = KNOWN_SCORES[brand.toLowerCase()];
-  var scoreRule = knownScore
-    ? 'pp_score MUST be exactly ' + knownScore + '.'
-    : 'Calculate pp_score: Start 100. Deduct 20 if RTO above 20%, 10 if 15-20%. Deduct 15 if refund time above 15 days, 8 if 10-15 days. Deduct 10 if repeat rate below 20%, 5 if 20-30%. Deduct 8 for high complaint volume. Deduct 5 for poor return portal.';
+  var igInstruction = ig
+    ? 'For Instagram source "' + ig + '": Search for "' + ig + ' instagram comments returns refund" and "' + brand + ' instagram complaints". Analyse comment patterns on their posts about orders, returns, delivery. Report the dominant sentiment pattern found.'
+    : 'For Instagram source: Search "' + brand + ' instagram comments returns refund complaints" to find patterns from their Instagram posts discussed publicly.';
 
   return [
-    'You are a post-purchase revenue strategist. Research "' + brand + '" using web search.',
+    'You are a post-purchase revenue analyst. Research "' + brand + '" using web search.',
+    'Search Reddit, Twitter/X, Google Reviews, consumer forums, AND Instagram.',
+    '',
+    igInstruction,
     '',
     'SCORE: ' + scoreRule,
-    'VERDICT: 70+= Good, 50-69= Average, 30-49= Needs Attention, 0-29= Critical',
+    'VERDICT: 70+=Good, 50-69=Average, 30-49=Needs Attention, 0-29=Critical',
     '',
-    'BENCHMARK scores (use exactly, do not change):',
-    'Snitch=42, Bewakoof=35, The Souled Store=55, Rare Rabbit=60, The Bear House=58',
-    'DaMENSCH=65, XYXX=68, Urbanic=45, Minimalist=72, Plum=70, mCaffeine=68',
-    'Pick 3 relevant competitors for ' + brand + ' from this list only.',
+    'BENCHMARK scores (fixed — do not change):',
+    'Snitch=42, Bewakoof=35, The Souled Store=55, Rare Rabbit=60, The Bear House=58, DaMENSCH=65, XYXX=68, Urbanic=45, Minimalist=72, Plum=70, mCaffeine=68',
+    'Pick 3 most relevant competitors for ' + brand + ' from this list only.',
     '',
-    'DO NOT include any rupee revenue estimates — the frontend calculates those.',
-    'DO NOT list online reviews or social media complaints.',
-    'Focus on STRATEGIC INSIGHTS — what is the root cause, what to fix, what it unlocks.',
+    'RULES: No rupee figures anywhere. Keep all text SHORT — max 2 lines per field. Be sharp and specific.',
     '',
-    'Return ONLY valid JSON starting { ending }. No markdown.',
+    'Return ONLY valid JSON starting { ending }. No markdown. No text outside JSON.',
     '',
     '{',
     '  "brand": "' + brand + '",',
-    '  "category": "<e.g. Mens Fashion>",',
+    '  "category": "<e.g. Mens Fast Fashion>",',
     '  "pp_score": <score>,',
     '  "score_verdict": "<Critical/Needs Attention/Average/Good>",',
-    '  "revenue_context": "<2 sentences. Strategic framing of the post-purchase problem. No rupee figures. Focus on customer trust, repeat purchase, and sustainable D2C growth.>",',
+    '  "one_liner": "<1 sharp sentence — the core PP problem for this brand. No rupee figures.>",',
     '  "kpis": {',
-    '    "rto_rate": "<e.g. 18-22%>",',
-    '    "rto_rate_num": <numeric e.g. 20>,',
-    '    "rto_note": "Industry avg 10-12%",',
+    '    "rto_rate": "<e.g. 20-25%>",',
+    '    "rto_rate_num": <numeric e.g. 22>,',
     '    "repeat_rate": "<e.g. 22%>",',
-    '    "repeat_rate_num": <numeric e.g. 22>,',
-    '    "repeat_note": "<Could reach 38% with better PP>",',
-    '    "refund_time": "<e.g. 12-15 days>",',
-    '    "refund_note": "Industry best 5-7 days",',
-    '    "monthly_complaints": "<e.g. 800-1200>",',
-    '    "complaints_note": "<what most are about>"',
+    '    "repeat_rate_num": <numeric e.g. 22>',
     '  },',
-    '  "priority_actions": [',
-    '    {',
-    '      "title": "<most impactful thing to fix — e.g. Reduce RTO rate from 22% to under 15%>",',
-    '      "desc": "<why this matters strategically for brand growth — 1-2 sentences, no rupee figures>",',
-    '      "revenue_impact": "<qualitative e.g. Biggest single lever for margin improvement>"',
-    '    },',
-    '    {',
-    '      "title": "<second priority — e.g. Automate the return process>",',
-    '      "desc": "<why this is critical for repeat purchase and brand trust>",',
-    '      "revenue_impact": "<qualitative impact>"',
-    '    },',
-    '    {',
-    '      "title": "<third priority — e.g. Implement price protection>",',
-    '      "desc": "<why this builds long-term customer loyalty>",',
-    '      "revenue_impact": "<qualitative impact>"',
-    '    },',
-    '    {',
-    '      "title": "<fourth priority — e.g. Proactive post-purchase communication>",',
-    '      "desc": "<why silent post-purchase kills repeat intent>",',
-    '      "revenue_impact": "<qualitative impact>"',
-    '    }',
+    '  "signals": [',
+    '    {"source": "Reddit", "volume": "high", "signal": "<sharp 1-2 line pattern — what % of posts say what>", "data_note": "<subreddit names + volume e.g. r/IndianFashionAddicts — 300+ posts>"},',
+    '    {"source": "Twitter / X", "volume": "high", "signal": "<dominant complaint pattern with context>", "data_note": "<volume and context>"},',
+    '    {"source": "Google Reviews", "volume": "medium", "signal": "<rating + what drags it down>", "data_note": "<total reviews analysed>"},',
+    '    {"source": "Instagram", "volume": "medium", "signal": "<comment pattern found on their posts — what customers complain about in comments>", "data_note": "<e.g. ' + (ig||brand) + ' posts — comment patterns analysed>"},',
+    '    {"source": "Consumer Forums", "volume": "low", "signal": "<PissedConsumer/Quora pattern>", "data_note": "<platform names + volume>"}',
+    '  ],',
+    '  "priorities": [',
+    '    {"title": "<specific fix #1>", "desc": "<why — 1 line, no rupees>", "impact": "<qualitative e.g. Biggest margin lever>"},',
+    '    {"title": "<specific fix #2>", "desc": "<why>", "impact": "<qualitative>"},',
+    '    {"title": "<specific fix #3>", "desc": "<why>", "impact": "<qualitative>"},',
+    '    {"title": "<specific fix #4>", "desc": "<why>", "impact": "<qualitative>"}',
     '  ],',
     '  "benchmark": [',
-    '    {"brand": "' + brand + '", "score": <same as pp_score>, "grade": "<from score>", "is_you": true},',
-    '    {"brand": "<competitor 1>", "score": <from reference>, "grade": "<from score>", "is_you": false},',
-    '    {"brand": "<competitor 2>", "score": <from reference>, "grade": "<from score>", "is_you": false},',
-    '    {"brand": "<competitor 3>", "score": <from reference>, "grade": "<from score>", "is_you": false}',
+    '    {"brand": "' + brand + '", "score": <same as pp_score>, "grade": "<A/B/C/D>", "is_you": true},',
+    '    {"brand": "<competitor 1>", "score": <from fixed list>, "grade": "<derived>", "is_you": false},',
+    '    {"brand": "<competitor 2>", "score": <from fixed list>, "grade": "<derived>", "is_you": false},',
+    '    {"brand": "<competitor 3>", "score": <from fixed list>, "grade": "<derived>", "is_you": false}',
     '  ],',
-    '  "valetpe": {',
-    '    "solves": [',
-    '      {',
-    '        "icon": "🧠",',
-    '        "title": "RTO and Refund Intelligence",',
-    '        "desc": "<specific description of how ValetPe\'s RMS works for ' + brand + '>",',
-    '        "before": "<what happens today without ValetPe — 1 line, no numbers>",',
-    '        "after": "<what happens with ValetPe — 1 line, no numbers>"',
-    '      },',
-    '      {',
-    '        "icon": "🏷️",',
-    '        "title": "Price Protection",',
-    '        "desc": "<specific description of how price protection works for ' + brand + '>",',
-    '        "before": "<what happens today>",',
-    '        "after": "<what happens with ValetPe>"',
-    '      },',
-    '      {',
-    '        "icon": "⚡",',
-    '        "title": "Automated Return Flow",',
-    '        "desc": "<specific description of automated returns for ' + brand + '>",',
-    '        "before": "<what happens today>",',
-    '        "after": "<what happens with ValetPe>"',
-    '      }',
-    '    ]',
-    '  }',
+    '  "solves": [',
+    '    {"icon": "🧠", "title": "RTO Intelligence", "before": "<1 line — problem today>", "after": "<1 line — with ValetPe>"},',
+    '    {"icon": "🏷️", "title": "Price Protection", "before": "<1 line>", "after": "<1 line>"},',
+    '    {"icon": "⚡", "title": "Smart Returns", "before": "<1 line>", "after": "<1 line>"}',
+    '  ]',
     '}'
   ].join('\n');
 }
@@ -140,14 +104,15 @@ const server = http.createServer(function(req, res) {
       try {
         var parsed = JSON.parse(body);
         var brand = parsed.brand;
+        var ig = parsed.ig || '';
         if (!brand) { res.writeHead(400); res.end(JSON.stringify({ error: 'Brand required' })); return; }
-        if (!API_KEY) { res.writeHead(500); res.end(JSON.stringify({ error: 'ANTHROPIC_API_KEY not set in Environment Variables' })); return; }
+        if (!API_KEY) { res.writeHead(500); res.end(JSON.stringify({ error: 'ANTHROPIC_API_KEY not set' })); return; }
 
         var payload = JSON.stringify({
           model: 'claude-sonnet-4-20250514',
-          max_tokens: 3000,
+          max_tokens: 2500,
           tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-          messages: [{ role: 'user', content: buildPrompt(brand) }]
+          messages: [{ role: 'user', content: buildPrompt(brand, ig) }]
         });
 
         var options = {
@@ -169,7 +134,6 @@ const server = http.createServer(function(req, res) {
             try {
               var result = JSON.parse(data);
               if (result.error) { res.writeHead(400); res.end(JSON.stringify({ error: result.error.message })); return; }
-
               var jsonStr = '';
               for (var i = 0; i < result.content.length; i++) {
                 if (result.content[i].type === 'text') { jsonStr = result.content[i].text; break; }
@@ -178,24 +142,25 @@ const server = http.createServer(function(req, res) {
               var match = jsonStr.match(/\{[\s\S]*\}/);
               if (!match) { res.writeHead(500); res.end(JSON.stringify({ error: 'No JSON found: ' + jsonStr.substring(0, 100) })); return; }
 
-              var report = JSON.parse(match[0]);
+              var r = JSON.parse(match[0]);
 
-              // SERVER-SIDE ENFORCEMENT
-              var knownScore = KNOWN_SCORES[brand.toLowerCase()];
-              if (knownScore) report.pp_score = knownScore;
-              report.score_verdict = verdictFromScore(report.pp_score);
-              if (report.benchmark && Array.isArray(report.benchmark)) {
-                report.benchmark.forEach(function(b) {
-                  if (b.is_you) { b.score = report.pp_score; }
-                  else { var ks = KNOWN_SCORES[b.brand.toLowerCase()]; if (ks) b.score = ks; }
-                  b.grade = gradeFromScore(b.score);
+              // Server-side enforcement
+              var ks = SCORES[brand.toLowerCase()];
+              if (ks) r.pp_score = ks;
+              r.score_verdict = verdict(r.pp_score);
+              if (r.benchmark && Array.isArray(r.benchmark)) {
+                r.benchmark.forEach(function(b) {
+                  if (b.is_you) { b.score = r.pp_score; }
+                  else { var bs = SCORES[b.brand.toLowerCase()]; if (bs) b.score = bs; }
+                  b.grade = grade(b.score);
                 });
               }
-              if (!report.kpis.rto_rate_num) report.kpis.rto_rate_num = 20;
-              if (!report.kpis.repeat_rate_num) report.kpis.repeat_rate_num = 25;
+              if (!r.kpis) r.kpis = {};
+              if (!r.kpis.rto_rate_num) r.kpis.rto_rate_num = 20;
+              if (!r.kpis.repeat_rate_num) r.kpis.repeat_rate_num = 25;
 
               res.writeHead(200, { 'Content-Type': 'application/json' });
-              res.end(JSON.stringify(report));
+              res.end(JSON.stringify(r));
             } catch(e) {
               res.writeHead(500);
               res.end(JSON.stringify({ error: 'Parse error: ' + e.message }));
