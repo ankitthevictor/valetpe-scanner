@@ -94,7 +94,7 @@ const server=http.createServer(function(req,res){
 
         var payload=JSON.stringify({
           model:'claude-sonnet-4-20250514',
-          max_tokens:1500,
+          max_tokens:4000,
           tools:[{type:'web_search_20250305',name:'web_search'}],
           messages:[{role:'user',content:buildPrompt(url,ig)}]
         });
@@ -115,7 +115,14 @@ const server=http.createServer(function(req,res){
               for(var i=0;i<result.content.length;i++){if(result.content[i].type==='text'){jsonStr=result.content[i].text;break;}}
               jsonStr=jsonStr.replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
               var match=jsonStr.match(/\{[\s\S]*\}/);
-              if(!match){res.writeHead(500);res.end(JSON.stringify({error:'No JSON found'}));return;}
+              if(!match){
+                // Log what actually came back to help debug
+                console.log('STOP_REASON:',result.stop_reason);
+                console.log('RAW_TEXT_PREVIEW:',jsonStr.substring(0,300));
+                res.writeHead(500);
+                res.end(JSON.stringify({error:'No JSON found. Stop reason: '+(result.stop_reason||'unknown')+'. Preview: '+jsonStr.substring(0,120)}));
+                return;
+              }
               var r=JSON.parse(match[0]);
 
               // Enforce scores
